@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>د. مريم سعد | عيادة طب وجراحة الجلدية، الليزر وتجديد نضارة البشرة 3D</title>
+  <meta name="description" content="عيادة د. مريم سعد التخصصية في طب وجراحة الجلدية، نضارة وترطيب البشرة العميق، علاج الندبات والتصبغات بأحدث أجهزة الليزر العالمية." />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#050e14',
+              slate: '#0c2331',
+              teal: '#0d9488',
+              glow: '#14b8a6',
+              gold: '#eab308',
+              rose: '#f43f5e'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & FontAwesome & Three.js -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-[#050e14] text-slate-100 selection:bg-teal-500 selection:text-white font-['Cairo']">
+
+  <!-- ========================================================================
+       TOP NOTIFICATION BAR & HOTLINE
+       ======================================================================== -->
+  <div class="bg-gradient-to-r from-teal-950 via-slate-900 to-teal-950 border-b border-teal-500/20 py-2 px-4 text-xs md:text-sm text-slate-300">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span>عيادة د. مريم سعد ترحب بكم لاستقبال الاستشارات وجلسات النضارة والترطيب العميق</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="tel:+9647700000000" class="hover:text-teal-400 transition flex items-center gap-1">
+          <i class="fa-solid fa-phone text-teal-400"></i>
+          <span dir="ltr">+964 770 000 0000</span>
+        </a>
+        <span class="hidden md:inline text-slate-600">|</span>
+        <span class="hidden md:inline text-amber-300 flex items-center gap-1">
+          <i class="fa-solid fa-star text-xs"></i> تقييم 4.9/5 (أكثر من 1,500 مراجع)
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       NAVIGATION HEADER (Glassmorphism)
+       ======================================================================== -->
+  <header class="sticky top-0 z-50 glass-panel border-b border-teal-500/20 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo (د. مريم سعد) -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-500 via-teal-700 to-slate-900 p-0.5 shadow-lg shadow-teal-500/20 group-hover:scale-105 transition-all">
+          <div class="w-full h-full bg-[#07151e] rounded-[14px] flex items-center justify-center">
+            <i class="fa-solid fa-droplet text-teal-400 text-xl group-hover:scale-110 transition"></i>
+          </div>
+        </div>
+        <div>
+          <div class="text-xl font-bold tracking-wide flex items-center gap-1.5">
+            <span class="text-white">د. مريم</span>
+            <span class="text-teal-400 font-black">سعد</span>
+          </div>
+          <p class="text-[11px] text-teal-200/70 font-medium">استشاري طب وجراحة الجلدية والليزر</p>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-300">
+        <a href="#hero" class="hover:text-teal-400 transition">الرئيسية</a>
+        <a href="#about" class="hover:text-teal-400 transition">عن الدكتورة</a>
+        <a href="#services" class="hover:text-teal-400 transition">جلسات العلاج</a>
+        <a href="#skin-explorer" class="hover:text-teal-400 transition flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span> سر نضارة البشرة
+        </a>
+        <a href="#before-after" class="hover:text-teal-400 transition">النتائج قبل وبعد</a>
+        <a href="#quiz" class="hover:text-teal-400 transition">فحص نوع بشرتك</a>
+        <a href="#faq" class="hover:text-teal-400 transition">الأسئلة الشائعة</a>
+      </nav>
+
+      <!-- Action CTA Buttons -->
+      <div class="flex items-center gap-3">
+        <a href="#booking" class="btn-shimmer relative px-5 py-2.5 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-600 text-white font-bold text-sm shadow-lg shadow-teal-500/30 hover:shadow-teal-500/50 hover:scale-105 transition-all flex items-center gap-2">
+          <i class="fa-regular fa-calendar-check"></i>
+          <span>حجز موعد فوري</span>
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-btn" class="lg:hidden p-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-slate-300 hover:text-white" aria-label="Toggle Menu">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-menu" class="fixed inset-0 z-50 glass-panel bg-[#050e14]/95 hidden-menu flex flex-col p-6 lg:hidden">
+    <div class="flex justify-between items-center pb-6 border-b border-slate-800">
+      <div class="flex items-center gap-2">
+        <i class="fa-solid fa-droplet text-teal-400 text-xl"></i>
+        <span class="font-bold text-lg text-white">د. مريم سعد</span>
+      </div>
+      <button id="close-mobile-menu" class="p-2 rounded-lg bg-slate-800 text-slate-300">
+        <i class="fa-solid fa-xmark text-xl"></i>
+      </button>
+    </div>
+    <div class="flex flex-col gap-4 py-8 text-lg font-medium text-slate-200">
+      <a href="#hero" class="mobile-nav-link hover:text-teal-400">الرئيسية</a>
+      <a href="#about" class="mobile-nav-link hover:text-teal-400">عن الدكتورة مريم سعد</a>
+      <a href="#services" class="mobile-nav-link hover:text-teal-400">جلسات العلاج والنضارة</a>
+      <a href="#skin-explorer" class="mobile-nav-link hover:text-teal-400">سر نضارة البشرة</a>
+      <a href="#before-after" class="mobile-nav-link hover:text-teal-400">معرض النتائج قبل وبعد</a>
+      <a href="#quiz" class="mobile-nav-link hover:text-teal-400">اختبار فحص البشرة</a>
+      <a href="#booking" class="mobile-nav-link hover:text-teal-400">حجز موعد</a>
+      <a href="#faq" class="mobile-nav-link hover:text-teal-400">الأسئلة الشائعة</a>
+    </div>
+    <div class="mt-auto pt-6 border-t border-slate-800">
+      <a href="tel:+9647700000000" class="w-full py-3 rounded-xl bg-teal-600 text-white font-bold flex justify-center items-center gap-2">
+        <i class="fa-solid fa-phone"></i> اتصال مباشر بالعيادة
+      </a>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       HERO SECTION (With 3D Liquid Serum & Deep Hydration Glow)
+       ======================================================================== -->
+  <section id="hero" class="relative min-h-[92vh] flex items-center justify-center overflow-hidden py-16 px-4 sm:px-6 lg:px-8">
+    
+    <!-- Three.js 3D Interactive Liquid Serum Canvas -->
+    <div id="canvas3d-container"></div>
+
+    <!-- Glowing Background Ambient Orbs -->
+    <div class="absolute top-1/4 right-10 w-96 h-96 bg-teal-500/15 rounded-full blur-3xl pointer-events-none animate-pulse-glow"></div>
+    <div class="absolute bottom-10 left-10 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none animate-pulse-glow"></div>
+
+    <!-- Floating 3D Interaction Tip -->
+    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 hidden md:flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/80 border border-teal-500/30 text-teal-300 text-xs shadow-lg backdrop-blur-md">
+      <i class="fa-solid fa-wand-magic-sparkles text-amber-400 animate-pulse"></i>
+      <span>حركي الماوس للتفاعل مع قطرة السيروم والترطيب ثلاثية الأبعاد 3D</span>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Right Column: Text & CTAs (RTL) -->
+      <div class="lg:col-span-7 space-y-6 text-center lg:text-right">
+        
+        <!-- Luxury Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-950/80 border border-teal-500/40 text-teal-300 text-xs md:text-sm font-semibold shadow-lg backdrop-blur-md">
+          <i class="fa-solid fa-droplet text-teal-400"></i>
+          <span>سر النضارة والترطيب العميق بأحدث تقنيات الجلدية والليزر</span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
+          نضارة وإشراقة طبيعية <br class="hidden sm:block" />
+          <span class="bg-gradient-to-l from-teal-400 via-emerald-300 to-amber-300 bg-clip-text text-transparent text-glow-teal">
+            لبشرتك تدوم طويلاً
+          </span>
+          مع د. مريم سعد
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
+          نمنحك بشرة ممتلئة بالترطيب والشباب مع بروتوكولات مخصصة تجمع بين <strong>تنظيف الهايدرافيشل العميق</strong>، <strong>إبر النضارة والبروفايلو</strong>، و<strong>علاج الندبات والتصبغات</strong> بمظهر طبيعي 100%.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+          <a href="#booking" class="btn-shimmer px-8 py-4 rounded-2xl bg-gradient-to-r from-teal-500 via-teal-600 to-emerald-600 text-white font-bold text-base shadow-xl shadow-teal-500/30 hover:scale-105 transition-all flex items-center gap-3">
+            <i class="fa-solid fa-calendar-check text-lg"></i>
+            <span>احجز موعد استشارتك الآن</span>
+          </a>
+
+          <a href="#quiz" class="px-6 py-4 rounded-2xl bg-slate-900/80 border border-teal-500/30 text-teal-300 hover:text-white hover:bg-slate-800 font-semibold text-base transition-all flex items-center gap-2">
+            <i class="fa-solid fa-clipboard-check text-teal-400"></i>
+            <span>فحص نوع واحتياج بشرتك</span>
+          </a>
+        </div>
+
+        <!-- Trust Stats Badges -->
+        <div class="grid grid-cols-3 gap-3 pt-6 border-t border-slate-800/80 max-w-xl mx-auto lg:mx-0">
+          <div class="p-3.5 rounded-2xl bg-slate-900/60 border border-sky-500/30 text-center space-y-1">
+            <div class="text-lg sm:text-xl font-black text-sky-400">+15 سنة</div>
+            <div class="text-[11px] text-slate-300">خبرة طب وجراحة الجلدية</div>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-slate-900/60 border border-teal-500/30 text-center space-y-1">
+            <div class="text-lg sm:text-xl font-black text-teal-400">+14,000</div>
+            <div class="text-[11px] text-slate-300">حالة نضارة وتجميل ناجحة</div>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-slate-900/60 border border-amber-500/30 text-center space-y-1">
+            <div class="text-lg sm:text-xl font-black text-amber-400">100%</div>
+            <div class="text-[11px] text-slate-300">أجهزة ومواد أصلية معتمدة</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Left Column: Doctor Profile Card (د. مريم سعد) -->
+      <div class="lg:col-span-5 perspective-container relative flex justify-center">
+        
+        <div class="tilt-card relative w-full max-w-md rounded-3xl p-1 bg-gradient-to-b from-teal-500/40 via-slate-700/30 to-amber-500/30 shadow-2xl backdrop-blur-xl">
+          <div class="relative rounded-[22px] overflow-hidden bg-[#071722] border border-teal-500/30 p-6">
+            
+            <!-- Doctor Portrait -->
+            <div class="relative w-full h-80 rounded-2xl overflow-hidden mb-6 bg-slate-800">
+              <img src="dr_maryam_portrait.jpg" alt="د. مريم سعد" class="w-full h-full object-cover object-top hover:scale-105 transition-all duration-700" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#071722] via-transparent to-transparent"></div>
+              
+              <!-- Floating Live Status -->
+              <div class="absolute top-4 right-4 px-3 py-1 rounded-full bg-emerald-950/90 border border-emerald-500/40 text-emerald-300 text-xs font-bold flex items-center gap-1.5 shadow-lg">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span>متواجدة بالعيادة</span>
+              </div>
+            </div>
+
+            <!-- Doctor Details -->
+            <div class="space-y-2 text-right">
+              <div class="flex items-center justify-between">
+                <h3 class="text-2xl font-bold text-white">د. مريم سعد</h3>
+                <span class="px-2.5 py-1 rounded-lg bg-teal-950 border border-teal-500/30 text-teal-300 text-xs font-semibold">بورد دولي معتمد</span>
+              </div>
+              <p class="text-sm text-teal-400 font-medium">استشاري طب وجراحة الجلدية، الليزر والتجميل الطبي</p>
+              <p class="text-xs text-slate-400 leading-relaxed pt-1">
+                خبرة أكثر من 15 سنة في علاج مشاكل البشرة، تحفيز الكولاجين، وإبراز الجمال الطبيعي بدون مبالغة أو تغيير الملامح.
+              </p>
+            </div>
+
+            <!-- Fast-Feature Badges -->
+            <div class="mt-5 pt-4 border-t border-slate-800 grid grid-cols-2 gap-2 text-xs">
+              <div class="flex items-center gap-2 text-slate-300">
+                <i class="fa-solid fa-heart text-teal-400"></i>
+                <span>علاجات بدون ألم أو جراحة</span>
+              </div>
+              <div class="flex items-center gap-2 text-slate-300">
+                <i class="fa-solid fa-sparkles text-amber-400"></i>
+                <span>مظهر طبيعي وجذاب 100%</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Floating Decorative Badges -->
+        <div class="absolute -bottom-6 -right-4 p-4 rounded-2xl glass-card border border-teal-500/40 shadow-xl hidden sm:flex items-center gap-3 animate-float-slow">
+          <div class="w-10 h-10 rounded-xl bg-teal-500/20 flex items-center justify-center text-teal-400 text-lg">
+            <i class="fa-solid fa-award"></i>
+          </div>
+          <div class="text-right">
+            <div class="text-xs font-bold text-white">عضو الأكاديمية الأمريكية للجلدية</div>
+            <div class="text-[10px] text-teal-300">AAD Fellow Member</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       ABOUT DR. MARYAM SAAD
+       ======================================================================== -->
+  <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-b from-[#050e14] via-[#081b26] to-[#050e14] border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: Certificates & Badges Grid -->
+        <div class="lg:col-span-5 grid grid-cols-2 gap-4">
+          <div class="p-6 rounded-2xl glass-card border border-teal-500/20 text-right space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-user-doctor"></i>
+            </div>
+            <h4 class="text-lg font-bold text-white">خبرة موثوقة</h4>
+            <p class="text-xs text-slate-400 leading-relaxed">أعلى درجات البورد التخصصي في علاج أمراض ومشاكل البشرة والليزر التجميلي.</p>
+          </div>
+
+          <div class="p-6 rounded-2xl glass-card border border-amber-500/20 text-right space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <h4 class="text-lg font-bold text-white">أجهزة آمنة ومريحة</h4>
+            <p class="text-xs text-slate-400 leading-relaxed">أجهزة أصلية معتمدة مع تقنيات تبريد خاصة لتجربة علاجية مريحة وبدون ألم.</p>
+          </div>
+
+          <div class="p-6 rounded-2xl glass-card border border-rose-500/20 text-right space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+            <h4 class="text-lg font-bold text-white">خطة مناسبة لكِ</h4>
+            <p class="text-xs text-slate-400 leading-relaxed">نفحص نوع بشرتك ونقترح الجلسات التي تناسب وقتك وميزانيتك والنتيجة التي تحلمين بها.</p>
+          </div>
+
+          <div class="p-6 rounded-2xl glass-card border border-sky-500/20 text-right space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-hand-holding-medical"></i>
+            </div>
+            <h4 class="text-lg font-bold text-white">اهتمام ومتابعة</h4>
+            <p class="text-xs text-slate-400 leading-relaxed">نبقى على تواصل معك بعد كل جلسة للتأكد من رضاكِ التام عن النتيجة.</p>
+          </div>
+        </div>
+
+        <!-- Right: Doctor Bio & Philosophy -->
+        <div class="lg:col-span-7 space-y-6 text-right">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-950/80 border border-teal-500/30 text-teal-400 text-xs font-semibold">
+            <i class="fa-solid fa-stethoscope"></i>
+            <span>فلسفة د. مريم سعد في العناية بجمالك</span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-snug">
+            "الجمال الحقيقي هو بشرة صحية وملامح نضرة تشبهك أنتِ"
+          </h2>
+
+          <p class="text-slate-300 text-base leading-relaxed">
+            في عيادتنا، هدفنا الأول أن تشعري بالراحة والثقة في كل زيارة. لا نلجأ إلى التغيير الحاد أو المبالغ فيه، بل نستخدم أحدث جلسات العناية بالبشرة والليزر لتحفيز شباب ونضارة بشرتك من الداخل لتبقي دائماً في أبهى إطلالة.
+          </p>
+
+          <!-- Qualifications Bullet points -->
+          <div class="space-y-3 pt-2">
+            <div class="flex items-start gap-3 text-sm text-slate-200">
+              <i class="fa-solid fa-circle-check text-teal-400 mt-1"></i>
+              <span>زميل الأكاديمية الأمريكية للأمراض الجلدية (AAD) - الولايات المتحدة الأمريكية.</span>
+            </div>
+            <div class="flex items-start gap-3 text-sm text-slate-200">
+              <i class="fa-solid fa-circle-check text-teal-400 mt-1"></i>
+              <span>عضو الجمعية الأوروبية لأبحاث الجلد وتطبيقات الليزر التجميلي (EADV).</span>
+            </div>
+            <div class="flex items-start gap-3 text-sm text-slate-200">
+              <i class="fa-solid fa-circle-check text-teal-400 mt-1"></i>
+              <span>مدربة معتمدة في تقنيات الفيلر الطبيعي وحقن النضارة وإعادة بناء الكولاجين.</span>
+            </div>
+          </div>
+
+          <div class="pt-4 flex items-center gap-4">
+            <a href="#booking" class="px-6 py-3 rounded-xl bg-teal-600 text-white font-bold text-sm hover:bg-teal-500 transition shadow-lg shadow-teal-600/30 flex items-center gap-2">
+              <i class="fa-solid fa-user-plus"></i> حجز كشف واستشارة
+            </a>
+            <a href="#services" class="px-6 py-3 rounded-xl bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 text-sm font-semibold transition">
+              استعراض الجلسات
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SIMPLE & INTUITIVE SKIN LAYERS GUIDE (Patient-Friendly Explorer)
+       ======================================================================== -->
+  <section id="skin-explorer" class="py-20 px-4 sm:px-6 lg:px-8 relative bg-[#050e14] overflow-hidden">
+    
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-950 border border-teal-500/40 text-teal-300 text-xs font-bold">
+          <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i>
+          <span>دليل مبسط وسهل</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-black text-white">
+          كيف نعتني بـ <span class="text-teal-400">نضارة وشباب بشرتك؟</span>
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base">
+          اضغطي على أي خطوة أدناه لمعرفة كيف تعمل جلساتنا لتمنحك النتيجة التي تتمنينها بكل سهولة وبساطة.
+        </p>
+      </div>
+
+      <!-- Interactive Explorer Container -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center glass-panel rounded-3xl p-6 sm:p-10 border border-teal-500/20">
+        
+        <!-- Left: Interactive Simple Layers List (RTL) -->
+        <div class="lg:col-span-5 space-y-4 text-right">
+          
+          <div class="skin-layer active p-5 rounded-2xl bg-slate-900/80 border border-slate-700" data-layer="epidermis">
+            <div class="flex items-center justify-between">
+              <h4 class="text-lg font-bold text-white">1. طبقة النضارة السطحية</h4>
+              <span class="text-xs px-2.5 py-0.5 rounded-full bg-sky-950 text-sky-400 border border-sky-500/30">إشراقة فورية ✨</span>
+            </div>
+            <p class="text-xs text-slate-300 mt-2">تنظيف المسام، تفتيح التصبغات السطحية، وإعطاء لمعان وإشراقة جاهزة للمناسبات.</p>
+          </div>
+
+          <div class="skin-layer p-5 rounded-2xl bg-slate-900/80 border border-slate-700" data-layer="dermis">
+            <div class="flex items-center justify-between">
+              <h4 class="text-lg font-bold text-white">2. طبقة الكولاجين والشباب</h4>
+              <span class="text-xs px-2.5 py-0.5 rounded-full bg-teal-950 text-teal-400 border border-teal-500/30">شد ومقاومة التجاعيد 💎</span>
+            </div>
+            <p class="text-xs text-slate-300 mt-2">تحفيز الكولاجين الطبيعي الذي يجعل البشرة مرنة ومشدودة ويعالج آثار وندبات حب الشباب.</p>
+          </div>
+
+          <div class="skin-layer p-5 rounded-2xl bg-slate-900/80 border border-slate-700" data-layer="hypodermis">
+            <div class="flex items-center justify-between">
+              <h4 class="text-lg font-bold text-white">3. طبقة التماسك ورفع الملامح</h4>
+              <span class="text-xs px-2.5 py-0.5 rounded-full bg-amber-950 text-amber-400 border border-amber-500/30">تحديد الفك والخدين 🌸</span>
+            </div>
+            <p class="text-xs text-slate-300 mt-2">رفع الترهلات الخفيفة وتحديد شكل الفك والوجه بطرق غير جراحية وبمظهر طبيعي.</p>
+          </div>
+
+        </div>
+
+        <!-- Right: Animated Cross-Section & Dynamic Details -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <div class="relative h-64 rounded-2xl bg-gradient-to-b from-slate-950 via-[#071a26] to-slate-950 p-6 border border-teal-500/30 overflow-hidden flex flex-col justify-between">
+            
+            <!-- Laser Beam Indicator -->
+            <div class="absolute top-0 right-12 w-2 bg-teal-400 shadow-[0_0_20px_#14b8a6] transition-all duration-500 rounded-b-full" id="interactive-laser-beam" style="height: 25%;"></div>
+            
+            <!-- Skin Level Diagram Labels -->
+            <div class="relative z-10 flex justify-between items-center text-xs font-semibold text-slate-400 border-b border-slate-800 pb-2">
+              <span class="text-teal-400"><i class="fa-solid fa-sparkles"></i> العناية الموجهة</span>
+              <span id="layer-detail-depth" class="text-amber-400 font-bold">الهدف: نضارة سريعة وإشراقة للمناسبات</span>
+            </div>
+
+            <!-- Dynamic Text info in Visualizer -->
+            <div class="relative z-10 text-right space-y-2">
+              <h3 id="layer-detail-title" class="text-xl font-bold text-white">1. طبقة النضارة السطحية (Surface Glow)</h3>
+              <p id="layer-detail-desc" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                هي الطبقة الخارجية التي تظهر للعين مباشرة؛ نهتم فيها بتنظيف المسام، إزالة الرؤوس السوداء، وتفتيح التصبغات السطحية.
+              </p>
+            </div>
+
+            <!-- Target Tech Box -->
+            <div class="relative z-10 p-3 rounded-xl bg-teal-950/60 border border-teal-500/30 text-xs text-teal-200 text-right">
+              <i class="fa-solid fa-wand-magic-sparkles text-amber-400 ml-1"></i>
+              <span id="layer-detail-tech">العلاجات المفضلة: تنظيف الهايدرافيشل الملكي، التقشير اللطيف، وسيرومات التفتيح.</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SPECIALIZED SERVICES & TREATMENTS (With Interactive Filter Tabs)
+       ======================================================================== -->
+  <section id="services" class="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-b from-[#050e14] via-[#081b26] to-[#050e14]">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-950 border border-teal-500/40 text-teal-300 text-xs font-bold">
+          <i class="fa-solid fa-sparkles text-amber-400"></i>
+          <span>علاجات وجلسات متخصصة</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-black text-white">
+          أهم الجلسات <span class="text-teal-400">والعلاجات في العيادة</span>
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base">
+          جلسات علاجية وتجميلية سريعة ومريحة بإشراف مباشر من د. مريم سعد.
+        </p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12">
+        <button class="service-filter-btn px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-teal-600 text-white shadow-md transition-all" data-filter="all">
+          جميع الجلسات
+        </button>
+        <button class="service-filter-btn px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-800/80 text-slate-300 hover:bg-slate-700 transition-all" data-filter="derma">
+          علاج حب الشباب والندبات
+        </button>
+        <button class="service-filter-btn px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-800/80 text-slate-300 hover:bg-slate-700 transition-all" data-filter="inject">
+          الفيلر والبوتوكس الطبيعي
+        </button>
+        <button class="service-filter-btn px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-800/80 text-slate-300 hover:bg-slate-700 transition-all" data-filter="laser">
+          أجهزة الليزر والشد
+        </button>
+        <button class="service-filter-btn px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-800/80 text-slate-300 hover:bg-slate-700 transition-all" data-filter="glow">
+          النضارة والهايدرافيشل
+        </button>
+      </div>
+
+      <!-- Services Grid (Tilt Cards + Laser Scan) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        
+        <!-- Service 1: Morpheus8 -->
+        <div class="service-card tilt-card laser-card rounded-3xl p-6 glass-card border border-teal-500/20 text-right space-y-4 flex flex-col justify-between" data-category="laser">
+          <div class="space-y-3">
+            <div class="w-14 h-14 rounded-2xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 text-2xl">
+              <i class="fa-solid fa-bolt-lightning"></i>
+            </div>
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-bold text-white">مورفيوس 8 (Morpheus8)</h3>
+              <span class="text-[11px] px-2.5 py-1 rounded-full bg-teal-950 text-teal-300 border border-teal-500/30">شد وتضييق مسام</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              أفضل جلسة لشد بشرة الوجه والرقبة، تضييق المسام، وإعادة الحيوية والنعومة للبشرة بدون أي جراحة.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+            <span class="text-xs text-amber-300 font-semibold"><i class="fa-regular fa-clock"></i> جلسة 40 دقيقة</span>
+            <a href="#booking" class="text-xs font-bold text-teal-400 hover:text-teal-300 flex items-center gap-1">
+              حجز الخدمة <i class="fa-solid fa-arrow-left"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 2: Natural Botox & Fillers -->
+        <div class="service-card tilt-card laser-card rounded-3xl p-6 glass-card border border-rose-500/20 text-right space-y-4 flex flex-col justify-between" data-category="inject">
+          <div class="space-y-3">
+            <div class="w-14 h-14 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 text-2xl">
+              <i class="fa-solid fa-syringe"></i>
+            </div>
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-bold text-white">الفيلر والبوتوكس الطبيعي</h3>
+              <span class="text-[11px] px-2.5 py-1 rounded-full bg-rose-950 text-rose-300 border border-rose-500/30">ملامح ناعمة وطبيعية</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              حقن احترافي بأجود المواد السويسرية والفرنسية المعتمدة لإخفاء خطوط التجاعيد وتحديد الشفاه والفك بنعومة تامة.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+            <span class="text-xs text-amber-300 font-semibold"><i class="fa-regular fa-clock"></i> جلسة 30 دقيقة</span>
+            <a href="#booking" class="text-xs font-bold text-teal-400 hover:text-teal-300 flex items-center gap-1">
+              حجز الخدمة <i class="fa-solid fa-arrow-left"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 3: Acne & Scar Revision -->
+        <div class="service-card tilt-card laser-card rounded-3xl p-6 glass-card border border-amber-500/20 text-right space-y-4 flex flex-col justify-between" data-category="derma">
+          <div class="space-y-3">
+            <div class="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-2xl">
+              <i class="fa-solid fa-circle-radiation"></i>
+            </div>
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-bold text-white">علاج حب الشباب والندبات</h3>
+              <span class="text-[11px] px-2.5 py-1 rounded-full bg-amber-950 text-amber-300 border border-amber-500/30">بشرة صافية وناعمة</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              بروتوكول متكامل للتخلص من الحبوب النشطة وعلاج آثار الحفر والندبات واستعادة ملمس البشرة الأملس.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+            <span class="text-xs text-amber-300 font-semibold"><i class="fa-regular fa-clock"></i> جلسة 40 دقيقة</span>
+            <a href="#booking" class="text-xs font-bold text-teal-400 hover:text-teal-300 flex items-center gap-1">
+              حجز الخدمة <i class="fa-solid fa-arrow-left"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 4: Royal Hydrafacial MD -->
+        <div class="service-card tilt-card laser-card rounded-3xl p-6 glass-card border border-sky-500/20 text-right space-y-4 flex flex-col justify-between" data-category="glow">
+          <div class="space-y-3">
+            <div class="w-14 h-14 rounded-2xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 text-2xl">
+              <i class="fa-solid fa-droplet"></i>
+            </div>
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-bold text-white">الهايدرافيشل الملكي (Hydrafacial)</h3>
+              <span class="text-[11px] px-2.5 py-1 rounded-full bg-sky-950 text-sky-300 border border-sky-500/30">تنظيف عميق وإشراقة</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              تنظيف مسام عميق، تقشير ناعم، وتغذية بالهيالورونيك أسيد لإشراقة ملكية فورية تناسب مناسباتك الخاصة.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+            <span class="text-xs text-amber-300 font-semibold"><i class="fa-regular fa-clock"></i> جلسة 50 دقيقة</span>
+            <a href="#booking" class="text-xs font-bold text-teal-400 hover:text-teal-300 flex items-center gap-1">
+              حجز الخدمة <i class="fa-solid fa-arrow-left"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 5: Profhilo & Skin Boosters -->
+        <div class="service-card tilt-card laser-card rounded-3xl p-6 glass-card border border-emerald-500/20 text-right space-y-4 flex flex-col justify-between" data-category="inject">
+          <div class="space-y-3">
+            <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl">
+              <i class="fa-solid fa-spa"></i>
+            </div>
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-bold text-white">إبر النضارة والبروفايلو</h3>
+              <span class="text-[11px] px-2.5 py-1 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-500/30">إبرة الشباب والترطيب</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              ترطيب فائق من الداخل وشد طبيعي للبشرة المتعبة بدون أي انتفاخ أو تغيير في شكل ملامحك.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+            <span class="text-xs text-amber-300 font-semibold"><i class="fa-regular fa-clock"></i> جلسة 20 دقيقة</span>
+            <a href="#booking" class="text-xs font-bold text-teal-400 hover:text-teal-300 flex items-center gap-1">
+              حجز الخدمة <i class="fa-solid fa-arrow-left"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 6: Laser Hair Removal -->
+        <div class="service-card tilt-card laser-card rounded-3xl p-6 glass-card border border-purple-500/20 text-right space-y-4 flex flex-col justify-between" data-category="laser">
+          <div class="space-y-3">
+            <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 text-2xl">
+              <i class="fa-solid fa-snowflake"></i>
+            </div>
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-bold text-white">ليزر إزالة الشعر (Candela Pro)</h3>
+              <span class="text-[11px] px-2.5 py-1 rounded-full bg-purple-950 text-purple-300 border border-purple-500/30">تبريد مريح وبدون ألم</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              جلسات ليزر عالية السرعة مع نظام التبريد الديناميكي (DCD) لراحة تامة ونعومة حريرية تدوم طويلاً.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+            <span class="text-xs text-amber-300 font-semibold"><i class="fa-regular fa-clock"></i> جلسة مريحة</span>
+            <a href="#booking" class="text-xs font-bold text-teal-400 hover:text-teal-300 flex items-center gap-1">
+              حجز الخدمة <i class="fa-solid fa-arrow-left"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       BEFORE & AFTER INTERACTIVE SLIDER (Real Results)
+       ======================================================================== -->
+  <section id="before-after" class="py-20 px-4 sm:px-6 lg:px-8 relative bg-[#050e14] border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-950 border border-teal-500/40 text-teal-300 text-xs font-bold">
+          <i class="fa-solid fa-sliders text-amber-400"></i>
+          <span>النتائج الحقيقية</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-black text-white">
+          تجارب ونتائج <span class="text-teal-400">قبل وبعد الجلسات</span>
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base">
+          اسحب المؤشر التفاعلي يميناً ويساراً لمشاهدة الفرق الحقيقي مع د. مريم سعد.
+        </p>
+      </div>
+
+      <!-- Case Selection Tabs -->
+      <div class="flex flex-wrap justify-center gap-3 mb-8">
+        <button class="ba-tab px-5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-teal-600 text-white shadow-lg transition-all" data-case="acne">
+          علاج آثار وندبات حب الشباب
+        </button>
+        <button class="ba-tab px-5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-800/80 text-slate-300 hover:bg-slate-700 transition-all" data-case="filler">
+          تحديد الفك والشفاه الطبيعي
+        </button>
+        <button class="ba-tab px-5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-800/80 text-slate-300 hover:bg-slate-700 transition-all" data-case="pigment">
+          تفتيح وتوحيد لون البشرة
+        </button>
+      </div>
+
+      <!-- Slider Component Grid -->
+      <div class="max-w-4xl mx-auto glass-panel p-4 sm:p-6 rounded-3xl border border-teal-500/30">
+        
+        <!-- Interactive Slider Box -->
+        <div id="ba-slider" class="ba-container">
+          
+          <!-- Before Image (Base) -->
+          <img id="ba-before-img" src="https://images.unsplash.com/photo-1512290900672-1f02e6ae5c4a?auto=format&fit=crop&w=800&q=80" alt="قبل العلاج" class="ba-image-before" />
+          
+          <!-- After Image (Clipped Overlay) -->
+          <div class="ba-image-after-wrapper">
+            <img id="ba-after-img" src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="بعد العلاج" class="ba-image-after" />
+          </div>
+
+          <!-- Drag Handle -->
+          <div class="ba-handle">
+            <div class="ba-handle-button">
+              <i class="fa-solid fa-arrows-left-right text-xs"></i>
+            </div>
+          </div>
+
+          <!-- Labels Overlay -->
+          <div class="absolute top-4 right-4 z-20 px-3 py-1 rounded-lg bg-black/60 backdrop-blur-md text-white text-xs font-bold border border-white/20">
+            قبل الجلسات
+          </div>
+          <div class="absolute top-4 left-4 z-20 px-3 py-1 rounded-lg bg-teal-600/80 backdrop-blur-md text-white text-xs font-bold border border-teal-400/40">
+            بعد الجلسات ✨
+          </div>
+
+        </div>
+
+        <!-- Case Description -->
+        <div class="mt-6 text-right p-4 rounded-2xl bg-slate-900/60 border border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div>
+            <h4 id="ba-case-title" class="text-base sm:text-lg font-bold text-white">علاج آثار وحفر حب الشباب - د. مريم سعد</h4>
+            <p id="ba-case-desc" class="text-xs sm:text-sm text-slate-400 mt-1">تحسن واضح في ملمس ونعومة البشرة واختفاء الندبات بعد 3 جلسات بسيطة.</p>
+          </div>
+          <a href="#booking" class="shrink-0 px-5 py-2.5 rounded-xl bg-teal-600 text-white font-bold text-xs hover:bg-teal-500 transition shadow-lg shadow-teal-500/20">
+            احجز استشارة لحالتك
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SMART SKIN DIAGNOSTIC QUIZ (Interactive Tool)
+       ======================================================================== -->
+  <section id="quiz" class="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-b from-[#050e14] via-[#092230] to-[#050e14]">
+    <div class="max-w-4xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center space-y-4 mb-10">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-950 border border-teal-500/40 text-teal-300 text-xs font-bold">
+          <i class="fa-solid fa-clipboard-question text-amber-400"></i>
+          <span>تحليل سريع وسهل</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-black text-white">
+          فحص سريع لنوع <span class="text-teal-400">واحتياج بشرتك</span>
+        </h2>
+        <p class="text-slate-400 text-sm">
+          أجيبي عن 3 أسئلة سريعة لنقترح لكِ الجلسة الأنسب لتحصلي على بشرة نضرة ومشرقة.
+        </p>
+      </div>
+
+      <!-- Quiz Box -->
+      <div class="glass-panel p-6 sm:p-10 rounded-3xl border border-teal-500/30 relative">
+        
+        <!-- Progress Bar -->
+        <div class="w-full bg-slate-800 h-2 rounded-full mb-8 overflow-hidden">
+          <div id="quiz-progress" class="bg-gradient-to-r from-teal-500 to-emerald-400 h-full w-1/3 transition-all duration-300"></div>
+        </div>
+
+        <!-- Step 1: Concern -->
+        <div class="quiz-step space-y-6 text-right" data-step="1">
+          <h3 class="text-xl font-bold text-white">1. ما هي أكثر مشكلة ترغبين في حلها ببشرتك؟</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="quiz-option p-4 rounded-2xl bg-slate-900/80 border border-slate-700 flex items-center gap-3" data-category="concern" data-value="acne">
+              <div class="w-10 h-10 rounded-xl bg-teal-500/20 text-teal-400 flex items-center justify-center text-lg"><i class="fa-solid fa-circle-dot"></i></div>
+              <div><strong class="text-white block text-sm">حب الشباب والندبات</strong><span class="text-xs text-slate-400">مسام واسعة، حفر، أو حبوب</span></div>
+            </div>
+            <div class="quiz-option p-4 rounded-2xl bg-slate-900/80 border border-slate-700 flex items-center gap-3" data-category="concern" data-value="pigment">
+              <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-lg"><i class="fa-solid fa-sun"></i></div>
+              <div><strong class="text-white block text-sm">التصبغات والكلف</strong><span class="text-xs text-slate-400">بقع شمس، بهتان، وعدم توحد اللون</span></div>
+            </div>
+            <div class="quiz-option p-4 rounded-2xl bg-slate-900/80 border border-slate-700 flex items-center gap-3" data-category="concern" data-value="aging">
+              <div class="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-lg"><i class="fa-solid fa-wand-sparkles"></i></div>
+              <div><strong class="text-white block text-sm">التجاعيد وارتخاء البشرة</strong><span class="text-xs text-slate-400">خطوط تعبيرية وفقدان التماسك</span></div>
+            </div>
+            <div class="quiz-option p-4 rounded-2xl bg-slate-900/80 border border-slate-700 flex items-center gap-3" data-category="concern" data-value="glow">
+              <div class="w-10 h-10 rounded-xl bg-sky-500/20 text-sky-400 flex items-center justify-center text-lg"><i class="fa-solid fa-droplet"></i></div>
+              <div><strong class="text-white block text-sm">الجفاف وفقدان النضارة</strong><span class="text-xs text-slate-400">بشرة باهتة تحتاج إشراقة وترطيب</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Skin Type (Hidden by default) -->
+        <div class="quiz-step space-y-6 text-right hidden" data-step="2">
+          <h3 class="text-xl font-bold text-white">2. ما هو نوع بشرتك تقريباً؟</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="quiz-option p-4 rounded-2xl bg-slate-900/80 border border-slate-700 flex items-center gap-3" data-category="skinType" data-value="oily">
+              <div class="w-10 h-10 rounded-xl bg-teal-500/20 text-teal-400 flex items-center justify-center text-lg"><i class="fa-solid fa-oil-well"></i></div>
+              <div><strong class="text-white block text-sm">دهنية أو تلمع سريعاً</strong><span class="text-xs text-slate-400">إفراز دهون ومسام ظاهرة</span></div>
+            </div>
+            <div class="quiz-option p-4 rounded-2xl bg-slate-900/80 border border-slate-700 flex items-center gap-3" data-category="skinType" data-value="dry">
+              <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-lg"><i class="fa-solid fa-snowflake"></i></div>
+              <div><strong class="text-white block text-sm">جافة أو مشدودة</strong><span class="text-xs text-slate-400">تقشر خفيف وإحساس بالجفاف</span></div>
+            </div>
+            <div class="quiz-option p-4 rounded-2xl bg-slate-900/80 border border-slate-700 flex items-center gap-3" data-category="skinType" data-value="mixed">
+              <div class="w-10 h-10 rounded-xl bg-sky-500/20 text-sky-400 flex items-center justify-center text-lg"><i class="fa-solid fa-shapes"></i></div>
+              <div><strong class="text-white block text-sm">مختلطة</strong><span class="text-xs text-slate-400">لمعان بالجبهة والأنف وجفاف بالخدين</span></div>
+            </div>
+            <div class="quiz-option p-4 rounded-2xl bg-slate-900/80 border border-slate-700 flex items-center gap-3" data-category="skinType" data-value="sensitive">
+              <div class="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-lg"><i class="fa-solid fa-heart"></i></div>
+              <div><strong class="text-white block text-sm">حساسة وسريعة الاحمرار</strong><span class="text-xs text-slate-400">تتأثر بالشمس والمنتجات</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Priority (Hidden by default) -->
+        <div class="quiz-step space-y-6 text-right hidden" data-step="3">
+          <h3 class="text-xl font-bold text-white">3. ما هي النتيجة التي تفضلينها؟</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="quiz-option p-4 rounded-2xl bg-slate-900/80 border border-slate-700 flex items-center gap-3" data-category="ageGroup" data-value="fast">
+              <div class="w-10 h-10 rounded-xl bg-teal-500/20 text-teal-400 flex items-center justify-center text-lg"><i class="fa-solid fa-bolt"></i></div>
+              <div><strong class="text-white block text-sm">نضارة وإشراقة فورية</strong><span class="text-xs text-slate-400">بدون أي فترة انتظار أو احمرار</span></div>
+            </div>
+            <div class="quiz-option p-4 rounded-2xl bg-slate-900/80 border border-slate-700 flex items-center gap-3" data-category="ageGroup" data-value="deep">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg"><i class="fa-solid fa-spa"></i></div>
+              <div><strong class="text-white block text-sm">علاج عميق ودائم</strong><span class="text-xs text-slate-400">جلسات لشد البشرة وبناء الكولاجين</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Result Card (Hidden until complete) -->
+        <div id="quiz-result-card" class="hidden text-right space-y-4 p-6 rounded-2xl bg-gradient-to-r from-teal-950/90 via-slate-900 to-teal-950/90 border border-teal-400/40">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-xl bg-teal-500/20 text-teal-400 flex items-center justify-center text-2xl">
+              <i class="fa-solid fa-certificate"></i>
+            </div>
+            <div>
+              <span class="text-xs text-teal-300 font-bold uppercase tracking-wider">الجلسة المقترحة من د. مريم سعد:</span>
+              <h4 id="quiz-treatment-title" class="text-xl font-extrabold text-white mt-0.5">باقة النضارة الملكية الفائقة</h4>
+            </div>
+          </div>
+          <p id="quiz-treatment-details" class="text-sm text-slate-300 leading-relaxed">
+            جلسة هيدرافيشل عميقة مع بوستر فيتامينات وميزوثيرابي نضارة لتجديد خلايا البشرة مع د. مريم سعد.
+          </p>
+          <div class="pt-2">
+            <button id="quiz-apply-booking-btn" class="px-6 py-3 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-600 text-white font-bold text-sm shadow-lg hover:scale-105 transition-all flex items-center gap-2">
+              <i class="fa-regular fa-calendar-check"></i>
+              <span>اعتماد هذا العلاج والانتقال للحجز الفوري</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quiz Navigation Controls -->
+        <div class="mt-8 pt-4 border-t border-slate-800 flex justify-between items-center">
+          <button id="quiz-prev-btn" class="hidden px-5 py-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold">
+            السابق
+          </button>
+          <button id="quiz-next-btn" class="px-6 py-2.5 rounded-xl bg-teal-600 text-white hover:bg-teal-500 text-xs sm:text-sm font-bold shadow-lg shadow-teal-500/20 mr-auto">
+            التالي <i class="fa-solid fa-arrow-left mr-1"></i>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       ONLINE APPOINTMENT BOOKING SYSTEM (With Instant WhatsApp Dispatch)
+       ======================================================================== -->
+  <section id="booking" class="py-20 px-4 sm:px-6 lg:px-8 relative bg-[#050e14] border-t border-slate-800">
+    <div class="max-w-5xl mx-auto">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- Left: Clinic Info & VIP Lounge -->
+        <div class="lg:col-span-5 space-y-6 text-right">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-950 border border-teal-500/40 text-teal-300 text-xs font-bold">
+            <i class="fa-solid fa-calendar-days text-amber-400"></i>
+            <span>حجز موعد سهل وسريع</span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl font-black text-white leading-tight">
+            ابدئي رحلة <span class="text-teal-400">النضارة والجمال</span> مع د. مريم سعد
+          </h2>
+
+          <p class="text-slate-400 text-sm leading-relaxed">
+            اختاري موعدك المفضل وسيتم تأكيد حجزك فورياً وتجهيز غرفتك الخاصة في العيادة.
+          </p>
+
+          <!-- Clinic Highlights -->
+          <div class="space-y-3 pt-2">
+            <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-teal-500/10 text-teal-400 flex items-center justify-center text-lg shrink-0">
+                <i class="fa-solid fa-clock"></i>
+              </div>
+              <div class="text-xs">
+                <strong class="text-white block">ساعات العمل</strong>
+                <span class="text-slate-400">السبت - الخميس: 10:00 صباحاً - 8:00 مساءً</span>
+              </div>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg shrink-0">
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+              <div class="text-xs">
+                <strong class="text-white block">تأكيد مباشر عبر الواتساب</strong>
+                <span class="text-slate-400">إرسال التذكرة والموعد مباشرة لهاتفك</span>
+              </div>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center text-lg shrink-0">
+                <i class="fa-solid fa-crown"></i>
+              </div>
+              <div class="text-xs">
+                <strong class="text-white block">راحة وخصوصية تامة</strong>
+                <span class="text-slate-400">أجنحة وغرف ليزر معقمة ومستقلة</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Interactive Booking Form -->
+        <div class="lg:col-span-7 glass-panel p-6 sm:p-8 rounded-3xl border border-teal-500/30 text-right">
+          
+          <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+            <i class="fa-solid fa-file-medical text-teal-400"></i>
+            <span>بيانات حجز الموعد مع د. مريم سعد</span>
+          </h3>
+
+          <form id="booking-form" class="space-y-4">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1.5">الاسم الكريم *</label>
+                <input type="text" id="booking-name" required placeholder="مثال: مريم أحمد" class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white text-sm focus:border-teal-500 focus:outline-none" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1.5">رقم الهاتف (واتساب) *</label>
+                <input type="tel" id="booking-phone" required dir="ltr" placeholder="+964 77..." class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white text-sm text-right focus:border-teal-500 focus:outline-none" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1.5">الخدمة المطلوبة *</label>
+                <select id="booking-service" class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white text-sm focus:border-teal-500 focus:outline-none">
+                  <option value="استشارة جلدية وتجميلية مع د. مريم سعد">استشارة جلدية وتجميلية شاملة</option>
+                  <option value="جلسة مورفيوس 8 (Morpheus8) للشد والندبات">جلسة مورفيوس 8 (Morpheus8)</option>
+                  <option value="حقن فيلر أو بوتوكس طبيعي">حقن فيلر أو بوتوكس طبيعي</option>
+                  <option value="إبر نضارة وبروفايلو (Profhilo)">إبر نضارة وبروفايلو (Profhilo)</option>
+                  <option value="جلسة هايدرافيشل ملكي (Hydrafacial MD)">جلسة هايدرافيشل ملكي</option>
+                  <option value="علاج حب الشباب والندبات بالليزر">علاج حب الشباب والندبات بالليزر</option>
+                  <option value="ليزر إزالة الشعر كانديلا برو ماكس">ليزر إزالة الشعر كانديلا</option>
+                  <option value="تفتيح وتوحيد لون البشرة">تفتيح وتوحيد لون البشرة</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1.5">الفرع المفضل *</label>
+                <select id="booking-branch" class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white text-sm focus:border-teal-500 focus:outline-none">
+                  <option value="الفرع الرئيسي - الجادرية">الفرع الرئيسي - الجادرية</option>
+                  <option value="فرع المنصور - مجمع النخبة الطبي">فرع المنصور - مجمع النخبة الطبي</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">تاريخ الموعد المفضل *</label>
+              <input type="date" id="booking-date" required class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white text-sm focus:border-teal-500 focus:outline-none" />
+            </div>
+
+            <!-- Time Slots Pills -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">الوقت المفضل للزيارة:</label>
+              <div class="grid grid-cols-3 sm:grid-cols-4 gap-2">
+                <button type="button" class="time-slot-btn px-3 py-2 rounded-xl bg-slate-800/80 border border-slate-700 text-slate-300 text-xs font-medium hover:border-teal-500">11:00 صباحاً</button>
+                <button type="button" class="time-slot-btn px-3 py-2 rounded-xl bg-slate-800/80 border border-slate-700 text-slate-300 text-xs font-medium hover:border-teal-500">01:30 ظهراً</button>
+                <button type="button" class="time-slot-btn px-3 py-2 rounded-xl bg-teal-600 border border-teal-500 text-white text-xs font-bold shadow">05:00 مساءً</button>
+                <button type="button" class="time-slot-btn px-3 py-2 rounded-xl bg-slate-800/80 border border-slate-700 text-slate-300 text-xs font-medium hover:border-teal-500">07:00 مساءً</button>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">ملاحظات أو استفسار إضافي (اختياري)</label>
+              <textarea id="booking-notes" rows="2" placeholder="أي تفاصيل تحبين مشاركتها معنا قبل الزيارة؟" class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white text-sm focus:border-teal-500 focus:outline-none"></textarea>
+            </div>
+
+            <button type="submit" class="btn-shimmer w-full py-3.5 rounded-xl bg-gradient-to-r from-teal-500 via-teal-600 to-emerald-600 text-white font-black text-sm shadow-xl shadow-teal-500/30 hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>تأكيد الموعد وإرسال التذكرة فوراً ⚡</span>
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       BOOKING CONFIRMATION MODAL
+       ======================================================================== -->
+  <div id="booking-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="max-w-md w-full glass-panel bg-[#071722] border border-teal-400/40 p-6 sm:p-8 rounded-3xl text-center space-y-5 animate-float-slow">
+      <div class="w-16 h-16 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-3xl mx-auto border border-emerald-500/40">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      
+      <div class="space-y-1">
+        <h3 class="text-2xl font-black text-white">تم تسجيل طلب الموعد بنجاح! ✨</h3>
+        <p class="text-xs text-slate-300">سعداء باختيارك لعيادة د. مريم سعد للجلدية والتجميل والليزر.</p>
+      </div>
+
+      <div id="modal-booking-details"></div>
+
+      <div class="space-y-2 pt-2">
+        <a id="modal-wa-link" target="_blank" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30 transition">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>فتح تذكرة الحجز بالواتساب الآن</span>
+        </a>
+        <button id="close-modal-btn" class="w-full py-2.5 rounded-xl bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold">
+          إغلاق النافذة
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       PATIENT TESTIMONIALS (Reviews for Dr. Maryam Saad)
+       ======================================================================== -->
+  <section class="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-b from-[#050e14] via-[#081b26] to-[#050e14]">
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-950 border border-teal-500/40 text-teal-300 text-xs font-bold">
+          <i class="fa-solid fa-heart text-rose-400"></i>
+          <span>تجارب وآراء المراجعين</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-black text-white">
+          تجارب المراجعين مع <span class="text-teal-400">د. مريم سعد</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Review 1 -->
+        <div class="tilt-card p-6 rounded-3xl glass-card border border-teal-500/20 text-right space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex text-amber-400 text-xs gap-1">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <span class="text-xs text-slate-500">منذ أسبوعين</span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            "سويت جلسات المورفيوس لعلاج ندبات قديمة بوجهي عند دكتورة مريم سعد، النتيجة تجنن وفرق واضح من ثاني جلسة، ودقة المعاملة والتعقيم بالعيادة فوق الممتاز."
+          </p>
+          <div class="flex items-center gap-3 pt-3 border-t border-slate-800">
+            <div class="w-10 h-10 rounded-full bg-teal-600/30 text-teal-300 flex items-center justify-center font-bold text-sm">ز.ح</div>
+            <div>
+              <div class="text-xs font-bold text-white">زينب حسين</div>
+              <div class="text-[10px] text-teal-400">جلسات مورفيوس 8 ونضارة</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="tilt-card p-6 rounded-3xl glass-card border border-rose-500/20 text-right space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex text-amber-400 text-xs gap-1">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <span class="text-xs text-slate-500">منذ شهر</span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            "أجمل شي بالدكتورة مريم إنها ما تحب المبالغة، حقنت فيلر وبوتوكس والكل لاحظ نضارة وجهي ومحد عرف إني مسوية إجراء لأن الشغل طبيعي جداً وراقي."
+          </p>
+          <div class="flex items-center gap-3 pt-3 border-t border-slate-800">
+            <div class="w-10 h-10 rounded-full bg-rose-600/30 text-rose-300 flex items-center justify-center font-bold text-sm">ن.م</div>
+            <div>
+              <div class="text-xs font-bold text-white">نور مهدي</div>
+              <div class="text-[10px] text-rose-400">حقن فيلر وبروفايلو</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="tilt-card p-6 rounded-3xl glass-card border border-amber-500/20 text-right space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex text-amber-400 text-xs gap-1">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <span class="text-xs text-slate-500">منذ 3 أسابيع</span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            "جربت ليزر كانديلا بروماكس بالعيادة، تبريد الجهاز مريح جداً وما حسيت بأي وجع، والكادر الطبي لطيف ومتعاون جداً. شكراً جزيلاً دكتورة مريم."
+          </p>
+          <div class="flex items-center gap-3 pt-3 border-t border-slate-800">
+            <div class="w-10 h-10 rounded-full bg-amber-600/30 text-amber-300 flex items-center justify-center font-bold text-sm">س.ع</div>
+            <div>
+              <div class="text-xs font-bold text-white">سارة العلي</div>
+              <div class="text-[10px] text-amber-400">ليزر كانديلا وهايدرافيشل</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       FAQ ACCORDION SECTION
+       ======================================================================== -->
+  <section id="faq" class="py-20 px-4 sm:px-6 lg:px-8 relative bg-[#050e14] border-t border-slate-800">
+    <div class="max-w-4xl mx-auto">
+      
+      <div class="text-center space-y-4 mb-12">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-950 border border-teal-500/40 text-teal-300 text-xs font-bold">
+          <i class="fa-solid fa-circle-question text-amber-400"></i>
+          <span>إجابات سريعة تهمك</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-black text-white">
+          الأسئلة <span class="text-teal-400">الشائعة</span>
+        </h2>
+      </div>
+
+      <div class="space-y-4 text-right">
+        
+        <!-- FAQ 1 -->
+        <div class="faq-item glass-panel rounded-2xl border border-slate-800 p-5 cursor-pointer">
+          <div class="faq-header flex justify-between items-center">
+            <h4 class="text-sm sm:text-base font-bold text-white">هل جلسات الفراكشنال ليزر أو المورفيوس مؤلمة؟</h4>
+            <i class="faq-icon fa-solid fa-chevron-down text-slate-400 text-xs transition-transform duration-300"></i>
+          </div>
+          <div class="faq-content">
+            <p class="text-xs sm:text-sm text-slate-400 pt-3 leading-relaxed border-t border-slate-800/80 mt-3">
+              نضع كريماً مهدئاً ومخدراً خفيفاً قبل الجلسة مع استخدام جهاز التبريد الهوائي، لتكون الجلسة مريحة جداً وبدون أي انزعاج.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item glass-panel rounded-2xl border border-slate-800 p-5 cursor-pointer">
+          <div class="faq-header flex justify-between items-center">
+            <h4 class="text-sm sm:text-base font-bold text-white">متى تظهر نتائج إبر النضارة والبروفايلو (Profhilo)؟</h4>
+            <i class="faq-icon fa-solid fa-chevron-down text-slate-400 text-xs transition-transform duration-300"></i>
+          </div>
+          <div class="faq-content">
+            <p class="text-xs sm:text-sm text-slate-400 pt-3 leading-relaxed border-t border-slate-800/80 mt-3">
+              تلاحظين إشراقة وترطيباً ناعماً خلال الأسبوع الأول، والنتيجة الكاملة في شد ونضارة البشرة تكتمل خلال 3 أسابيع.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item glass-panel rounded-2xl border border-slate-800 p-5 cursor-pointer">
+          <div class="faq-header flex justify-between items-center">
+            <h4 class="text-sm sm:text-base font-bold text-white">كم جلسة أحتاج لعلاج آثار وحفر حب الشباب؟</h4>
+            <i class="faq-icon fa-solid fa-chevron-down text-slate-400 text-xs transition-transform duration-300"></i>
+          </div>
+          <div class="faq-content">
+            <p class="text-xs sm:text-sm text-slate-400 pt-3 leading-relaxed border-t border-slate-800/80 mt-3">
+              غالباً من 3 إلى 4 جلسات كافية لتحقيق تحسن ملحوظ جداً وتنعيم سطح البشرة واستعادة مظهرها الصافي.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item glass-panel rounded-2xl border border-slate-800 p-5 cursor-pointer">
+          <div class="faq-header flex justify-between items-center">
+            <h4 class="text-sm sm:text-base font-bold text-white">هل يمكن عمل جلسة الهايدرافيشل قبل المناسبات مباشرة؟</h4>
+            <i class="faq-icon fa-solid fa-chevron-down text-slate-400 text-xs transition-transform duration-300"></i>
+          </div>
+          <div class="faq-content">
+            <p class="text-xs sm:text-sm text-slate-400 pt-3 leading-relaxed border-t border-slate-800/80 mt-3">
+              نعم بالتأكيد! الهايدرافيشل الملكي يمنح نضارة فورية بدون أي احمرار، وهو الخيار الأفضل قبل أي مناسبة بيوم أو يومين.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       FOOTER & CLINIC DETAILS
+       ======================================================================== -->
+  <footer class="bg-[#03090d] border-t border-slate-800 pt-16 pb-12 px-4 sm:px-6 lg:px-8 text-slate-400">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-right">
+      
+      <!-- Brand & Info -->
+      <div class="space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-teal-500/20 text-teal-400 flex items-center justify-center text-xl">
+            <i class="fa-solid fa-droplet"></i>
+          </div>
+          <span class="text-lg font-bold text-white">د. مريم سعد</span>
+        </div>
+        <p class="text-xs leading-relaxed text-slate-400">
+          عيادة تخصصية رائدة في طب وجراحة الجلدية، الليزر والعلاجات التجميلية غير الجراحية، نضمن لكم أعلى معايير الأمان والجمال الطبيعي.
+        </p>
+        <div class="flex gap-3 pt-2">
+          <a href="#" class="w-8 h-8 rounded-lg bg-slate-800 text-teal-400 flex items-center justify-center hover:bg-teal-600 hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="w-8 h-8 rounded-lg bg-slate-800 text-teal-400 flex items-center justify-center hover:bg-teal-600 hover:text-white transition"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="w-8 h-8 rounded-lg bg-slate-800 text-teal-400 flex items-center justify-center hover:bg-teal-600 hover:text-white transition"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" class="w-8 h-8 rounded-lg bg-slate-800 text-teal-400 flex items-center justify-center hover:bg-teal-600 hover:text-white transition"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="space-y-3">
+        <h4 class="text-sm font-bold text-white">روابط سريعة</h4>
+        <ul class="space-y-2 text-xs">
+          <li><a href="#hero" class="hover:text-teal-400 transition">الرئيسية</a></li>
+          <li><a href="#about" class="hover:text-teal-400 transition">عن الدكتورة مريم سعد</a></li>
+          <li><a href="#services" class="hover:text-teal-400 transition">جلسات العلاج</a></li>
+          <li><a href="#skin-explorer" class="hover:text-teal-400 transition">سر نضارة البشرة</a></li>
+          <li><a href="#before-after" class="hover:text-teal-400 transition">معرض قبل وبعد</a></li>
+        </ul>
+      </div>
+
+      <!-- Services Links -->
+      <div class="space-y-3">
+        <h4 class="text-sm font-bold text-white">أهم العلاجات</h4>
+        <ul class="space-y-2 text-xs">
+          <li><a href="#services" class="hover:text-teal-400 transition">مورفيوس 8 لشد البشرة والمسام</a></li>
+          <li><a href="#services" class="hover:text-teal-400 transition">الفيلر والبوتوكس الطبيعي</a></li>
+          <li><a href="#services" class="hover:text-teal-400 transition">علاج آثار وندبات حب الشباب</a></li>
+          <li><a href="#services" class="hover:text-teal-400 transition">الهايدرافيشل الملكي ونضارة البشرة</a></li>
+          <li><a href="#services" class="hover:text-teal-400 transition">إزالة الشعر بليزر كانديلا</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="space-y-3">
+        <h4 class="text-sm font-bold text-white">معلومات العيادة</h4>
+        <div class="space-y-2.5 text-xs">
+          <div class="flex items-start gap-2">
+            <i class="fa-solid fa-location-dot text-teal-400 mt-0.5"></i>
+            <span>الفرع الرئيسي: بغداد - الجادرية / فرع المنصور</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-phone text-teal-400"></i>
+            <span dir="ltr">+964 770 000 0000</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-envelope text-teal-400"></i>
+            <span>info@dr-maryam-derma.com</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-calendar-check text-teal-400"></i>
+            <span>السبت - الخميس: 10 ص - 8 م</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Copyright -->
+    <div class="max-w-7xl mx-auto mt-12 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+      <p>© 2026 د. مريم سعد لطب وجراحة الجلدية والتجميل. جميع الحقوق محفوظة.</p>
+      <p class="text-teal-400/80">تصميم وتطوير فائق الدقة 3D Liquid Serum & Medical Aesthetics</p>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       FLOATING WHATSAPP BUTTON (Pulse Effect)
+       ======================================================================== -->
+  <a href="https://wa.me/9647700000000?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%AF%D9%83%D8%AA%D9%88%D8%B1%D8%A9%20%D9%85%D8%B1%D9%8A%D9%85%20%D8%B3%D8%B9%D8%AF%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B9%D9%8A%D8%A7%D8%AF%D8%A9%20%D9%88%D8%AD%D8%AC%D8%B2%20%D9%85%D9%88%D8%B9%D8%AF" target="_blank" class="whatsapp-btn fixed bottom-6 left-6 z-40 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-transform" aria-label="WhatsApp Contact">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- Custom JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>

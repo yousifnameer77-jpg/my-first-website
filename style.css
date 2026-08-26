@@ -1,0 +1,395 @@
+/* ==========================================================================
+   DERMA CLINIC - 3D LUXURY MEDICAL AESTHETICS STYLES
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --primary-dark: #07151e;
+  --primary-slate: #0c2331;
+  --primary-teal: #0d9488;
+  --teal-glow: #14b8a6;
+  --accent-gold: #eab308;
+  --accent-rose: #f43f5e;
+  --accent-soft-rose: #fda4af;
+  --glass-bg: rgba(12, 35, 49, 0.7);
+  --glass-border: rgba(20, 184, 166, 0.2);
+  --glass-glow: rgba(20, 184, 166, 0.15);
+}
+
+* {
+  font-family: 'Cairo', 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #050e14;
+  color: #e2e8f0;
+  overflow-x: hidden;
+  direction: rtl;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #07151e;
+}
+::-webkit-scrollbar-thumb {
+  background: #0d9488;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #14b8a6;
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: rgba(12, 35, 49, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(15, 43, 60, 0.6) 0%, rgba(7, 21, 30, 0.8) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(20, 184, 166, 0.15);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(20, 184, 166, 0.5);
+  box-shadow: 0 15px 35px -10px rgba(20, 184, 166, 0.25), 0 0 20px rgba(20, 184, 166, 0.15);
+  transform: translateY(-5px);
+}
+
+/* 3D Perspective & Tilt Container */
+.perspective-container {
+  perspective: 1200px;
+}
+
+.tilt-element {
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.25s ease;
+  will-change: transform;
+}
+
+.tilt-inner {
+  transform: translateZ(30px);
+}
+
+/* Floating Animations */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(1.5deg);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(12px) rotate(-1.5deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.08);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 7s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+/* Three.js Canvas Overlay & Background */
+#canvas3d-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+/* Glowing text and borders */
+.text-glow-teal {
+  text-shadow: 0 0 20px rgba(20, 184, 166, 0.6), 0 0 40px rgba(20, 184, 166, 0.3);
+}
+
+.text-glow-gold {
+  text-shadow: 0 0 20px rgba(234, 179, 8, 0.5), 0 0 35px rgba(234, 179, 8, 0.2);
+}
+
+.text-glow-rose {
+  text-shadow: 0 0 20px rgba(244, 63, 94, 0.5);
+}
+
+/* Laser Beam Scan Effect on Tech Cards */
+.laser-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.laser-card::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #14b8a6, #38bdf8, #14b8a6, transparent);
+  box-shadow: 0 0 15px #14b8a6, 0 0 30px #38bdf8;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.laser-card:hover::after {
+  opacity: 1;
+  animation: scanLaser 2.2s linear infinite;
+}
+
+@keyframes scanLaser {
+  0% {
+    top: -5%;
+  }
+  100% {
+    top: 105%;
+  }
+}
+
+/* Before & After Interactive Slider */
+.ba-container {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  user-select: none;
+  cursor: ew-resize;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+}
+
+.ba-image-before,
+.ba-image-after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.ba-image-before {
+  z-index: 1;
+}
+
+.ba-image-after-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.ba-image-after-wrapper .ba-image-after {
+  width: 100%;
+  min-width: 100%;
+  height: 100%;
+}
+
+.ba-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  background: #ffffff;
+  z-index: 10;
+  transform: translateX(-50%);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8), 0 0 10px #14b8a6;
+}
+
+.ba-handle-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  background: #0f766e;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 20px rgba(20, 184, 166, 0.6);
+}
+
+/* 3D Skin Layer Explorer */
+.skin-layer {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+}
+
+.skin-layer.active {
+  transform: translateX(-10px) scale(1.02);
+  border-color: #14b8a6;
+  background: rgba(20, 184, 166, 0.15);
+  box-shadow: 0 0 25px rgba(20, 184, 166, 0.3);
+}
+
+.skin-layer::before {
+  content: '';
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 0%;
+  background: #14b8a6;
+  border-radius: 2px;
+  transition: height 0.3s ease;
+}
+
+.skin-layer.active::before {
+  height: 80%;
+}
+
+/* Custom Gradient Badges */
+.badge-luxury {
+  background: linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(20, 184, 166, 0.15) 100%);
+  border: 1px solid rgba(234, 179, 8, 0.3);
+  color: #fef08a;
+}
+
+.badge-teal {
+  background: rgba(13, 148, 136, 0.15);
+  border: 1px solid rgba(20, 184, 166, 0.3);
+  color: #5eead4;
+}
+
+/* Accordion Smooth Height */
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
+}
+
+.faq-item.open .faq-content {
+  max-height: 300px;
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(180deg);
+  color: #14b8a6;
+}
+
+/* Radio Card Selector for Quiz */
+.quiz-option {
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.quiz-option:hover {
+  border-color: rgba(20, 184, 166, 0.5);
+  background: rgba(15, 43, 60, 0.8);
+}
+
+.quiz-option.selected {
+  border-color: #14b8a6;
+  background: linear-gradient(135deg, rgba(20, 184, 166, 0.2) 0%, rgba(12, 35, 49, 0.9) 100%);
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.25);
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-btn {
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+  animation: pulseWa 2.5s infinite;
+}
+
+@keyframes pulseWa {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+/* Shimmer Light effect for CTA */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transform: skewX(-25deg);
+  animation: shimmerBtn 3.5s infinite;
+}
+
+@keyframes shimmerBtn {
+  0% {
+    left: -150%;
+  }
+  30%, 100% {
+    left: 150%;
+  }
+}
+
+/* Mobile Nav Drawer */
+#mobile-menu {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
+
+#mobile-menu.hidden-menu {
+  transform: translateX(100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+#mobile-menu.active-menu {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
