@@ -18,10 +18,10 @@ const AREAS = [
 ];
 const SLOTS = ['صباحاً (9 – 12)', 'ظهراً (12 – 4)', 'مساءً (4 – 9)'];
 const ADDONS = [
-  { id: 'a1', name: 'شوكولاتة فاخرة', price: 15000, emoji: '🍫' },
-  { id: 'a2', name: 'دبدوب صغير', price: 20000, emoji: '🧸' },
-  { id: 'a3', name: 'بالون هدية', price: 8000, emoji: '🎈' },
-  { id: 'a4', name: 'عطر مصغّر', price: 25000, emoji: '🌸' }
+  { id: 'a1', name: 'شوكولاتة فاخرة', price: 15000, ic: 'choc' },
+  { id: 'a2', name: 'دبدوب صغير', price: 20000, ic: 'bear' },
+  { id: 'a3', name: 'بالون هدية', price: 8000, ic: 'balloon' },
+  { id: 'a4', name: 'عطر مصغّر', price: 25000, ic: 'scent' }
 ];
 
 /* ============ أدوات ============ */
@@ -40,6 +40,29 @@ function shade(hex, amt) {
   r = Math.round((t - r) * p + r); g = Math.round((t - g) * p + g); b = Math.round((t - b) * p + b);
   return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 }
+
+/* ============ أيقونات (خطّية، مرسومة بالكود) ============ */
+const ICONS = {
+  truck: '<path d="M2.5 6.5h11v10h-11z"/><path d="M13.5 10h4.2l3.3 3.3v3.2h-7.5"/><circle cx="7" cy="17.5" r="2"/><circle cx="17" cy="17.5" r="2"/>',
+  leaf: '<path d="M5 19.5C4 10 10 4 20 4c.5 10-5 16-15 15.5z"/><path d="M5 19.5 14 10.5"/>',
+  gift: '<rect x="3" y="9" width="18" height="4" rx="1"/><path d="M5 13v7.5h14V13M12 9v11.5"/><path d="M12 9C9.5 9 8 7.700 8 6.200 8 4.800 9 4 10.200 4 11.500 4 12 6 12 9zm0 0c2.500 0 4-1.300 4-2.800C16 4.800 15 4 13.800 4 12.500 4 12 6 12 9z"/>',
+  cash: '<rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.7"/><path d="M6 12h.01M18 12h.01"/>',
+  heart: '<path d="M12 20.500S4 16 3 10.500C2.500 7.500 4.500 5 7.300 5c1.900 0 3.500 1 4.700 2.800C13.200 6 14.800 5 16.700 5 19.500 5 21.500 7.500 21 10.500c-1 5.500-9 10-9 10z"/>',
+  ring: '<circle cx="12" cy="15" r="5.500"/><path d="m8.500 5.500 1.800-2.500h3.400l1.800 2.500-3.500 3.500z"/>',
+  sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2.500V5M12 19v2.500M2.500 12H5M19 12h2.500M5.300 5.300l1.800 1.800M16.900 16.900l1.800 1.800M5.300 18.700l1.800-1.800M16.900 7.100l1.800-1.800"/>',
+  chev: '<path d="m9 5 7 7-7 7"/>',
+  check: '<path d="m5 12.500 4.500 4.500L19 7.500"/>',
+  x: '<path d="M6 6l12 12M18 6 6 18"/>',
+  star: '<path fill="currentColor" stroke="none" d="m12 2.800 2.800 5.800 6.300.9-4.600 4.400 1.100 6.300L12 17.200l-5.600 3 1.100-6.300L2.900 9.500l6.300-.9z"/>',
+  choc: '<rect x="5" y="3" width="14" height="18" rx="2.500"/><path d="M5 9h14M5 15h14M12 3v18"/>',
+  bear: '<circle cx="12" cy="13.500" r="6.500"/><circle cx="6.200" cy="6.800" r="2.300"/><circle cx="17.800" cy="6.800" r="2.300"/><path d="M9.700 12.500h.01M14.300 12.500h.01M10.800 15.700c.8.700 1.600.7 2.400 0"/>',
+  balloon: '<ellipse cx="12" cy="9" rx="5.500" ry="6.500"/><path d="m11 15.500-1 2h4l-1-2M12 17.500c0 2 2 2 2 4"/>',
+  scent: '<rect x="6.500" y="9.500" width="11" height="11.500" rx="2.500"/><path d="M10 9.500v-3h4v3M9 4h6"/>',
+  bag: '<path d="M5.500 8h13l-1 12.500h-11z"/><path d="M9 8a3 3 0 0 1 6 0"/>',
+  bloom: '<g fill="currentColor" stroke="none"><ellipse cx="12" cy="6.200" rx="3" ry="4.200"/><ellipse cx="12" cy="6.200" rx="3" ry="4.200" transform="rotate(72 12 12)"/><ellipse cx="12" cy="6.200" rx="3" ry="4.200" transform="rotate(144 12 12)"/><ellipse cx="12" cy="6.200" rx="3" ry="4.200" transform="rotate(216 12 12)"/><ellipse cx="12" cy="6.200" rx="3" ry="4.200" transform="rotate(288 12 12)"/></g><circle cx="12" cy="12" r="2.400" fill="#f6c343" stroke="none"/>'
+};
+const icon = n => `<svg class="svg-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n] || ''}</svg>`;
+const hydrateIcons = (root = document) => $$('i[data-i]', root).forEach(el => { el.innerHTML = icon(el.dataset.i); delete el.dataset.i; });
 
 /* ============ رسم الورد (SVG) ============ */
 const ring = (n, rx, ry, off, fill, stroke, rot = 0) => {
@@ -92,7 +115,7 @@ function bouquet({ items, wrap = '#f4dfd6', ribbon = '#b3263d', filler = true, l
   const k = n <= 3 ? 1.35 : n <= 5 ? 1.15 : 1;
   const pos = n <= 3 ? [[150, 150, 1.3], [105, 175, 1.05], [195, 175, 1.05]].slice(0, n) : POS.slice(0, n);
   let s = `<svg viewBox="0 0 300 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${esc(label)}"><defs>` +
-    `<linearGradient id="${id}" x1="0" x2="1"><stop offset="0" stop-color="${shade(wrap, -10)}"/><stop offset=".5" stop-color="${shade(wrap, 12)}"/><stop offset="1" stop-color="${shade(wrap, -16)}"/></linearGradient></defs>`;
+    `<filter id="${id}s" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="2.5" stdDeviation="2.8" flood-color="#3b0d19" flood-opacity=".38"/></filter><linearGradient id="${id}" x1="0" x2="1"><stop offset="0" stop-color="${shade(wrap, -10)}"/><stop offset=".5" stop-color="${shade(wrap, 12)}"/><stop offset="1" stop-color="${shade(wrap, -16)}"/></linearGradient></defs>`;
   s += `<ellipse cx="150" cy="370" rx="64" ry="7" fill="#000" opacity=".13"/>`;
   // ورق أخضر
   const leaf = (x, y, r, sc) => `<g transform="translate(${x} ${y}) rotate(${r}) scale(${sc})"><path d="M0 0C-16-18-14-52 0-70 14-52 16-18 0 0Z" fill="#3f7a4a"/><path d="M0 -4V-62" stroke="#2c5a36" stroke-width="1.5"/></g>`;
@@ -110,7 +133,7 @@ function bouquet({ items, wrap = '#f4dfd6', ribbon = '#b3263d', filler = true, l
   // الزهور
   const order = pos.map((p, i) => ({ p, it: its[i], i })).sort((a, b) => a.p[1] - b.p[1]);
   order.forEach(({ p, it, i }) => {
-    s += `<g transform="translate(${p[0]} ${p[1]}) rotate(${(i * 37) % 50 - 25}) scale(${(p[2] * k * .88).toFixed(2)})">${FLOWERS[it.t](it.c)}</g>`;
+    s += `<g filter="url(#${id}s)" transform="translate(${p[0]} ${p[1]}) rotate(${(i * 37) % 50 - 25}) scale(${(p[2] * k * .88).toFixed(2)})">${FLOWERS[it.t](it.c)}</g>`;
   });
   // التغليف
   s += `<path d="M66 248C110 236 190 236 234 248L172 374H128Z" fill="url(#${id})" stroke="${shade(wrap, -26)}" stroke-width="1"/>` +
@@ -208,7 +231,7 @@ const cartCount = () => cart.reduce((s, i) => s + i.qty, 0);
 function addToCart(item) {
   const ex = cart.find(i => i.key === item.key);
   ex ? ex.qty++ : cart.push({ ...item, qty: 1 });
-  persist(); toast('🌸 تمت الإضافة للسلة');
+  persist(); toast('تمت الإضافة للسلة');
   const b = $('#openCart'); b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump');
 }
 function persist() { save('petals_cart', cart); renderCart(); }
@@ -216,11 +239,11 @@ function renderCart() {
   $('#cartCount').textContent = cartCount();
   const box = $('#cartItems');
   if (!cart.length) {
-    box.innerHTML = `<div class="empty"><span>🌷</span><h3>سلتك فارغة</h3><p>اختار باقة تفرّح قلب اللي تحبه</p></div>`;
+    box.innerHTML = `<div class="empty"><span class="empty-ic">${icon('bag')}</span><h3>سلتك فارغة</h3><p>اختار باقة تفرّح قلب اللي تحبه</p></div>`;
   } else {
     box.innerHTML = cart.map(i => `
       <div class="line">
-        <div class="thumb" style="${i.art ? i.art.bg : 'background:var(--blush)'}">${i.svg || '<span style="font-size:2rem">' + (i.emoji || '🎁') + '</span>'}</div>
+        <div class="thumb" style="${i.art ? i.art.bg : 'background:var(--blush)'}">${i.svg || '<span class="th-ic">' + icon(i.ic || 'gift') + '</span>'}</div>
         <div><h4>${esc(i.name)}</h4><small>${esc(i.meta || '')}</small>
           <div class="qty"><button data-q="${i.key}" data-d="-1" aria-label="إنقاص">−</button><span>${i.qty}</span><button data-q="${i.key}" data-d="1" aria-label="زيادة">+</button></div></div>
         <div class="lp">${fmt(i.price * i.qty)}<button class="rm" data-rm="${i.key}">حذف</button></div>
@@ -230,10 +253,10 @@ function renderCart() {
   $('#subTotal').textContent = fmt(sub);
   const left = CONFIG.freeShipOver - sub;
   $('#shipFill').style.width = Math.min(100, sub / CONFIG.freeShipOver * 100) + '%';
-  $('#shipMsg').textContent = !cart.length ? '' : left > 0 ? `باقي ${fmt(left)} ويصير التوصيل مجاني 🚚` : '🎉 توصيلك مجاني!';
+  $('#shipMsg').textContent = !cart.length ? '' : left > 0 ? `باقي ${fmt(left)} ويصير التوصيل مجاني` : 'توصيلك مجاني';
   $('#toCheckout').disabled = !cart.length;
   $('#toCheckout').style.opacity = cart.length ? 1 : .5;
-  $('#addons').innerHTML = cart.length ? `<h5>أضف لمسة إضافية 🎁</h5><div class="addon-row">${ADDONS.map(a => `<button class="addon" data-addon="${a.id}"><span>${a.emoji}</span>${a.name}<b>${fmt(a.price)}</b></button>`).join('')}</div>` : '';
+  $('#addons').innerHTML = cart.length ? `<h5>أضف لمسة إضافية</h5><div class="addon-row">${ADDONS.map(a => `<button class="addon" data-addon="${a.id}"><span class="ad-ic">${icon(a.ic)}</span>${a.name}<b>${fmt(a.price)}</b></button>`).join('')}</div>` : '';
   if (checkoutOpen) renderSummary();
 }
 
@@ -260,14 +283,14 @@ const phoneOK = v => /^(\+?964|0)?7[3-9]\d{8}$/.test(v.replace(/[\s-]/g, ''));
 const toLatin = s => s.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
 
 function buildMessage(o) {
-  const lines = [`🌸 *طلب جديد — ${CONFIG.shop}*`, `رقم الطلب: #${o.no}`, '',
-    `👤 الاسم: ${o.name}`, `📞 الهاتف: ${o.phone}`];
-  if (o.rName || o.rPhone) lines.push(`🎁 المستلم: ${o.rName || '-'} ${o.rPhone ? '(' + o.rPhone + ')' : ''}`);
-  lines.push(`📍 المنطقة: ${o.area}`, `🏠 العنوان: ${o.addr}`, `🗓 الموعد: ${o.date} · ${o.slot}`);
-  if (o.msg) lines.push(`💌 رسالة البطاقة: «${o.msg}»${o.anon ? ' (بدون ذكر اسم المرسل)' : ''}`);
+  const lines = [`*طلب جديد — ${CONFIG.shop}*`, `رقم الطلب: #${o.no}`, '',
+    `الاسم: ${o.name}`, `الهاتف: ${o.phone}`];
+  if (o.rName || o.rPhone) lines.push(`المستلم: ${o.rName || '-'} ${o.rPhone ? '(' + o.rPhone + ')' : ''}`);
+  lines.push(`المنطقة: ${o.area}`, `العنوان: ${o.addr}`, `الموعد: ${o.date} · ${o.slot}`);
+  if (o.msg) lines.push(`رسالة البطاقة: «${o.msg}»${o.anon ? ' (بدون ذكر اسم المرسل)' : ''}`);
   lines.push('', '*الطلبات:*');
   o.items.forEach(i => lines.push(`• ${i.name}${i.meta ? ' (' + i.meta + ')' : ''} × ${i.qty} = ${fmt(i.price * i.qty)}`));
-  lines.push('', `المجموع: ${fmt(o.sub)}`, `التوصيل: ${o.ship ? fmt(o.ship) : 'مجاني'}`, `*الإجمالي: ${fmt(o.total)}*`, '💵 الدفع: نقداً عند الاستلام');
+  lines.push('', `المجموع: ${fmt(o.sub)}`, `التوصيل: ${o.ship ? fmt(o.ship) : 'مجاني'}`, `*الإجمالي: ${fmt(o.total)}*`, 'الدفع: نقداً عند الاستلام');
   return lines.join('\n');
 }
 const waLink = text => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`;
@@ -342,7 +365,7 @@ function init() {
   $$('[data-filler]').forEach(e => e.textContent = fmt(CONFIG.fillerPrice));
   $('#yr').textContent = new Date().getFullYear();
   $('#fPhone').textContent = CONFIG.phoneDisplay;
-  $('#fWa').href = $('#waFloat').href = waLink(`مرحباً ${CONFIG.shop}، أريد الاستفسار عن باقات الورد 🌸`);
+  $('#fWa').href = $('#waFloat').href = waLink(`مرحباً ${CONFIG.shop}، أريد الاستفسار عن باقات الورد`);
 
   $('#heroArt').innerHTML = `<img class="hero-ph" data-hero="1" src="photos/hero.jpg" alt="باقة ورد">`;
 
@@ -356,7 +379,7 @@ function init() {
   $('#fSlot').innerHTML = SLOTS.map(s => `<option>${s}</option>`).join('');
   initDate();
 
-  renderFilters(); renderGrid(); renderCart(); renderBuilder();
+  renderFilters(); renderGrid(); renderCart(); renderBuilder(); hydrateIcons();
 
   // أحداث
   $('#filters').addEventListener('click', e => { const b = e.target.closest('[data-c]'); if (!b) return; cat = b.dataset.c; renderFilters(); renderGrid(); });
@@ -385,7 +408,7 @@ function init() {
   $('#addons').addEventListener('click', e => {
     const a = e.target.closest('[data-addon]'); if (!a) return;
     const ad = ADDONS.find(x => x.id === a.dataset.addon);
-    addToCart({ key: ad.id, name: ad.name, meta: 'إضافة', price: ad.price, emoji: ad.emoji });
+    addToCart({ key: ad.id, name: ad.name, meta: 'إضافة', price: ad.price, ic: ad.ic });
   });
   $('#openCart').onclick = openCart; $('#closeCart').onclick = closeCart; $('#overlay').onclick = closeCart;
   $('#toCheckout').onclick = () => { if (cart.length) { setView(true); $('#viewForm .d-body').scrollTop = 0; } };

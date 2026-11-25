@@ -278,3 +278,34 @@ input[type=range]{width:100%;accent-color:var(--rose);height:6px}
 .pm-art{padding:0;overflow:hidden}.pm-art .ph{min-height:420px}
 .hero-ph{position:relative;width:min(430px,80%);aspect-ratio:1;border-radius:50%;object-fit:cover;box-shadow:inset 0 0 0 14px rgba(255,255,255,.55),var(--shadow);border:10px solid #fff}
 .hero-art:has(.hero-ph)::before{display:none}
+
+/* أيقونات */
+.ic{display:inline-flex;width:1.15em;height:1.15em;vertical-align:-.2em;flex:none}
+.svg-ic{width:100%;height:100%;display:block}
+.topbar .ic{color:var(--gold);margin-inline-end:4px}
+.logo-mark .ic{width:24px;height:24px;color:#fff}
+.hero-points .ic.gold,.stars .ic{color:var(--gold)}
+.hero-points .ic{width:.95em;height:.95em}
+.stars{display:flex;gap:3px;letter-spacing:0}
+.stars .ic{width:18px;height:18px}
+.trust span{display:grid;place-items:center;width:58px;height:58px;margin:0 auto 6px;border-radius:50%;background:linear-gradient(145deg,var(--blush),var(--blush-2));color:var(--rose-2);font-size:1rem}
+.trust span .ic{width:26px;height:26px}
+.occ-card span{display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.2);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.4);font-size:1rem}
+.occ-card span .ic{width:30px;height:30px}
+.occ-card:hover span{transform:scale(1.08) rotate(0)}
+.pay{display:flex;align-items:center;gap:10px}
+.pay-ic{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#fff;color:var(--rose-2)}
+.pay-ic .ic{width:19px;height:19px}
+.x .ic{width:16px;height:16px}
+.back{display:inline-flex;align-items:center;gap:4px}
+.back .ic{width:16px;height:16px;transform:scaleX(-1)}
+.ok-ico .ic{width:42px;height:42px;stroke-width:2.5}
+.ok-ico{font-size:1rem}
+.empty-ic{display:grid;place-items:center;width:84px;height:84px;margin:0 auto 12px;border-radius:50%;background:var(--blush);color:var(--rose-2)}
+.empty-ic .svg-ic{width:38px;height:38px}
+.th-ic{display:grid;place-items:center;width:100%;height:100%;background:var(--blush);color:var(--rose-2)}
+.th-ic .svg-ic{width:34px;height:34px}
+.ad-ic{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--blush);color:var(--rose-2)}
+.ad-ic .svg-ic{width:18px;height:18px}
+.line .thumb{overflow:hidden}
+.line .thumb .th-ic{border-radius:16px}
