@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>بتلات | محل ورد وباقات فاخرة مع توصيل سريع</title>
+<meta name="description" content="بتلات — باقات ورد جوري وتوليب وبيوني بتنسيق فاخر. اطلب أونلاين وندفع عند الاستلام، توصيل لباب البيت في نفس اليوم.">
+<meta name="theme-color" content="#5b1a2b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Cairo:wght@400;600;700;800&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar">🚚 توصيل مجاني للطلبات فوق <b data-free></b> · طلب اليوم يوصل اليوم قبل الساعة <b>6 مساءً</b></div>
+
+<header class="nav" id="nav">
+  <a class="logo" href="#top"><span class="logo-mark">✿</span><span>بتلات</span></a>
+  <nav class="links" aria-label="التنقل">
+    <a href="#shop">الباقات</a>
+    <a href="#builder">صمّم باقتك</a>
+    <a href="#occasions">المناسبات</a>
+    <a href="#how">كيف أطلب؟</a>
+    <a href="#reviews">آراء الزبائن</a>
+  </nav>
+  <button class="cart-btn" id="openCart" aria-label="فتح السلة">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 12H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+    <span>السلة</span><i id="cartCount">0</i>
+  </button>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero">
+  <div class="petals" id="petals" aria-hidden="true"></div>
+  <div class="hero-text reveal">
+    <span class="eyebrow">محل ورد · بغداد</span>
+    <h1>ورد يحجي <em>بدالك</em></h1>
+    <p>باقات منسّقة بيد فنانين، من أطيب أنواع الجوري والبيوني والتوليب. اختار باقتك، اكتب رسالتك، وإحنا نوصلها بأجمل صورة لحد باب بيت اللي تحبه.</p>
+    <div class="hero-cta">
+      <a href="#shop" class="btn btn-primary">اطلب باقتك الآن</a>
+      <a href="#builder" class="btn btn-ghost">صمّم باقتك بنفسك ✿</a>
+    </div>
+    <ul class="hero-points">
+      <li><b>+٥٠٠٠</b> باقة سلّمناها</li>
+      <li><b>٤.٩</b> ★ تقييم الزبائن</li>
+      <li><b>٣ ساعات</b> وقت التوصيل</li>
+    </ul>
+  </div>
+  <div class="hero-art reveal" id="heroArt"></div>
+</section>
+
+<!-- TRUST -->
+<section class="trust">
+  <div><span>🌹</span><h3>ورد طازج يومياً</h3><p>نستلم الورد كل صباح، وما نبيع إلا الطازج.</p></div>
+  <div><span>🎀</span><h3>تغليف فاخر</h3><p>ورق هدايا وشريط ساتان مع بطاقة مجانية.</p></div>
+  <div><span>🛵</span><h3>توصيل لحد الباب</h3><p>نفس اليوم داخل بغداد، وبصورة قبل التسليم.</p></div>
+  <div><span>💵</span><h3>الدفع عند الاستلام</h3><p>ما تدفع إلا لمن تستلم الباقة.</p></div>
+</section>
+
+<!-- SHOP -->
+<section class="section" id="shop">
+  <div class="sec-head reveal">
+    <span class="eyebrow">مجموعتنا</span>
+    <h2>باقات تخلّي اللحظة <em>تنذكر</em></h2>
+    <p>كل باقة تنعمل لحظة طلبك، والصورة اللي تشوفها قريبة جداً من اللي توصلك.</p>
+  </div>
+  <div class="filters reveal" id="filters" role="tablist" aria-label="تصنيف الباقات"></div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<!-- BUILDER -->
+<section class="section builder-wrap" id="builder">
+  <div class="builder">
+    <div class="builder-preview reveal">
+      <div class="builder-art" id="bArt"></div>
+      <div class="b-price"><small>السعر</small><b id="bPrice">0</b></div>
+    </div>
+    <div class="builder-form reveal">
+      <span class="eyebrow">استوديو الورد</span>
+      <h2>صمّم باقتك <em>على ذوقك</em></h2>
+      <p class="muted">اختار نوع الورد واللون وعدد الأغصان، وشوف باقتك تتشكل قدامك.</p>
+
+      <label class="lbl">نوع الورد</label>
+      <div class="chips" id="bType"></div>
+
+      <label class="lbl">اللون</label>
+      <div class="swatches" id="bColor"></div>
+
+      <label class="lbl">عدد الأغصان: <b id="bCountLbl">12</b></label>
+      <input type="range" id="bCount" min="5" max="50" step="1" value="12">
+
+      <label class="lbl">لون التغليف</label>
+      <div class="swatches" id="bWrap"></div>
+
+      <label class="check"><input type="checkbox" id="bFiller" checked> إضافة بيبي بريث وورق أخضر · <b data-filler></b></label>
+
+      <button class="btn btn-primary wide" id="bAdd">أضف الباقة للسلة</button>
+    </div>
+  </div>
+</section>
+
+<!-- OCCASIONS -->
+<section class="section" id="occasions">
+  <div class="sec-head reveal">
+    <span class="eyebrow">لكل مناسبة</span>
+    <h2>الورد أحلى طريقة <em>تقول بيها كل شي</em></h2>
+  </div>
+  <div class="occ">
+    <button class="occ-card reveal" data-filter="جوري" style="--a:#7a1f35;--b:#d94b6b"><span>❤</span><h3>حب ورومانسية</h3><p>جوري أحمر وهدايا للي يسوى</p></button>
+    <button class="occ-card reveal" data-filter="زفاف" style="--a:#8a6d3b;--b:#e9d7a8"><span>💍</span><h3>أفراح وخطوبة</h3><p>مسكات عروس وتنسيق قاعات</p></button>
+    <button class="occ-card reveal" data-filter="هدايا" style="--a:#3d6b7a;--b:#a9d6e2"><span>🎁</span><h3>مواليد وتخرج</h3><p>باقات فرح بألوان مبهجة</p></button>
+    <button class="occ-card reveal" data-filter="ربيعية" style="--a:#41703f;--b:#b8dd9a"><span>🌷</span><h3>صباح الخير</h3><p>باقات خفيفة تضوي يومك</p></button>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="section how" id="how">
+  <div class="sec-head reveal">
+    <span class="eyebrow">بثلاث خطوات</span>
+    <h2>الطلب <em>أسهل مما تتصور</em></h2>
+  </div>
+  <ol class="steps">
+    <li class="reveal"><b>١</b><h3>اختار الباقة</h3><p>من مجموعتنا أو صمّمها بنفسك.</p></li>
+    <li class="reveal"><b>٢</b><h3>اكتب بياناتك</h3><p>العنوان، الموعد، ورسالتك على البطاقة.</p></li>
+    <li class="reveal"><b>٣</b><h3>نوصلها ونصوّرها</h3><p>نأكد الطلب وياك بالواتساب ونرسل صورة قبل التوصيل.</p></li>
+  </ol>
+</section>
+
+<!-- REVIEWS -->
+<section class="section" id="reviews">
+  <div class="sec-head reveal">
+    <span class="eyebrow">من زبائننا</span>
+    <h2>كلمات <em>تفرح القلب</em></h2>
+  </div>
+  <div class="rev">
+    <figure class="reveal"><div class="stars">★★★★★</div><blockquote>طلبت باقة جوري لخطيبتي وصلت بالموعد بالضبط وأحلى من الصورة. أكيد راح أكرر.</blockquote><figcaption>علي ك. · الكرادة</figcaption></figure>
+    <figure class="reveal"><div class="stars">★★★★★</div><blockquote>تنسيق راقي وريحة الورد تفوح بالبيت. أمي فرحت كلش بهدية عيد الأم.</blockquote><figcaption>زينب ح. · المنصور</figcaption></figure>
+    <figure class="reveal"><div class="stars">★★★★★</div><blockquote>مسكة العروس كانت خيال! تعاملهم محترم وسريعين بالرد على الواتساب.</blockquote><figcaption>نور م. · الجادرية</figcaption></figure>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="f-grid">
+    <div>
+      <a class="logo light" href="#top"><span class="logo-mark">✿</span><span>بتلات</span></a>
+      <p>محل ورد متخصص بالباقات الفاخرة والهدايا. نصنع الفرحة بتفاصيل صغيرة.</p>
+    </div>
+    <div><h4>تواصل ويانا</h4><p><a id="fWa" href="#" target="_blank" rel="noopener">واتساب</a></p><p id="fPhone"></p><p>بغداد، العراق</p></div>
+    <div><h4>أوقات الدوام</h4><p>يومياً من 9 صباحاً حتى 9 مساءً</p><p>الطلبات المستعجلة: ساعتين فقط</p></div>
+    <div><h4>روابط</h4><p><a href="#shop">الباقات</a></p><p><a href="#builder">صمّم باقتك</a></p><p><a href="#how">كيف أطلب</a></p></div>
+  </div>
+  <div class="copy">© <span id="yr"></span> بتلات. جميع الحقوق محفوظة.</div>
+</footer>
+
+<a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="تواصل واتساب">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .2-3.2-.7-2.7-1.1-4.4-3.8-4.5-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .6l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.8.9c.3.1.5.2.5.3.1.2.1.8-.1 1.3Z"/></svg>
+</a>
+
+<!-- CART DRAWER -->
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="سلة التسوق" aria-hidden="true">
+  <div class="d-head">
+    <h3 id="dTitle">سلتك</h3>
+    <button class="x" id="closeCart" aria-label="إغلاق">✕</button>
+  </div>
+
+  <!-- step 1 -->
+  <div class="d-view" id="viewCart">
+    <div class="d-body" id="cartItems"></div>
+    <div class="addons" id="addons"></div>
+    <div class="d-foot">
+      <div class="ship-bar"><div id="shipFill"></div></div>
+      <p class="ship-msg" id="shipMsg"></p>
+      <div class="row"><span>المجموع</span><b id="subTotal">0</b></div>
+      <button class="btn btn-primary wide" id="toCheckout">متابعة الطلب</button>
+    </div>
+  </div>
+
+  <!-- step 2 -->
+  <form class="d-view" id="viewForm" hidden novalidate>
+    <div class="d-body form">
+      <button type="button" class="back" id="backCart">→ رجوع للسلة</button>
+
+      <h4>بيانات المستلم</h4>
+      <div class="f-row">
+        <div class="field"><label for="fName">اسمك</label><input id="fName" required autocomplete="name" placeholder="مثال: أحمد"></div>
+        <div class="field"><label for="fPhone2">رقم هاتفك</label><input id="fPhone2" required inputmode="tel" autocomplete="tel" placeholder="07XXXXXXXXX" dir="ltr"></div>
+      </div>
+      <div class="f-row">
+        <div class="field"><label for="fRName">اسم المستلم (اختياري)</label><input id="fRName" placeholder="لو الهدية لشخص ثاني"></div>
+        <div class="field"><label for="fRPhone">هاتف المستلم (اختياري)</label><input id="fRPhone" inputmode="tel" placeholder="07XXXXXXXXX" dir="ltr"></div>
+      </div>
+
+      <h4>التوصيل</h4>
+      <div class="field"><label for="fArea">المنطقة</label><select id="fArea" required></select></div>
+      <div class="field"><label for="fAddr">العنوان بالتفصيل</label><textarea id="fAddr" rows="2" required placeholder="المحلة، الشارع، أقرب نقطة دالة، رقم الدار"></textarea></div>
+      <div class="f-row">
+        <div class="field"><label for="fDate">تاريخ التوصيل</label><input type="date" id="fDate" required></div>
+        <div class="field"><label for="fSlot">الوقت</label><select id="fSlot"></select></div>
+      </div>
+
+      <h4>رسالتك على البطاقة</h4>
+      <div class="field"><textarea id="fMsg" rows="3" maxlength="200" placeholder="اكتب كلمة حلوة... (مجاناً)"></textarea></div>
+      <label class="check"><input type="checkbox" id="fAnon"> إرسال الهدية بدون ذكر اسمي</label>
+
+      <div class="pay">💵 الدفع <b>نقداً عند الاستلام</b></div>
+
+      <div class="summary" id="summary"></div>
+      <p class="err" id="formErr" role="alert"></p>
+    </div>
+    <div class="d-foot">
+      <button class="btn btn-primary wide" type="submit">تأكيد الطلب · <span id="grandBtn"></span></button>
+      <small class="note">بعد التأكيد سيتم فتح واتساب لإرسال الطلب للمحل.</small>
+    </div>
+  </form>
+</aside>
+
+<!-- PRODUCT MODAL -->
+<div class="modal" id="pModal" aria-hidden="true">
+  <div class="modal-card pm">
+    <button class="x" data-close aria-label="إغلاق">✕</button>
+    <div class="pm-art" id="pmArt"></div>
+    <div class="pm-info" id="pmInfo"></div>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="modal" id="okModal" aria-hidden="true">
+  <div class="modal-card ok">
+    <div class="ok-ico">✿</div>
+    <h3>تم استلام طلبك!</h3>
+    <p>رقم الطلب <b id="okNo"></b></p>
+    <p class="muted">لتأكيد الطلب بسرعة، اضغط الزر لإرساله للمحل عبر واتساب. إذا ما انفتح الواتساب تلقائياً استخدم الزر.</p>
+    <a class="btn btn-primary wide" id="okWa" target="_blank" rel="noopener">إرسال الطلب عبر واتساب</a>
+    <button class="btn btn-ghost wide" data-close>إغلاق</button>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
