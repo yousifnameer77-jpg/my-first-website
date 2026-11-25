@@ -1,0 +1,875 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>عيادة بَشَرة</title>
+<meta name="description" content="عيادة جلدية وتجميل في بغداد، مع حجز موعد أونلاين بدقيقتين.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+/* Layout concept: a calm clinical sheet. Big Arabic display type, a skin-layer cross-section
+   as the one illustration, and the Fitzpatrick scale (I-VI) as the recurring colour motif. */
+:root {
+  --bg: #eef2f0;
+  --surface: #ffffff;
+  --surface-2: #e6ede9;
+  --ink: #0f2b2c;
+  --muted: #4b6264;
+  --line: #d2ddd9;
+  --brand: #0f4c4a;
+  --on-brand: #f2faf8;
+  --accent: #d9714b;
+  --accent-soft: #fbe6dc;
+  --ok: #17724a;
+  --ok-soft: #dff3e8;
+  --warn: #8a5a00;
+  --warn-soft: #fbefd0;
+  --bad: #b3261e;
+  --bad-soft: #fbe2e0;
+  --focus: #0b6bcb;
+  --sk1: #f6e0d0; --sk2: #edcbb1; --sk3: #ddaf8a; --sk4: #c48e65; --sk5: #94623f; --sk6: #5b3a26;
+  --layer1: #efc9ae; --layer2: #e3a98a; --layer3: #f2dcb8;
+  --shadow: 0 1px 2px rgba(15,43,44,.06), 0 8px 24px rgba(15,43,44,.07);
+  --font-display: "El Messiri", "Noto Naskh Arabic", "Segoe UI", Tahoma, serif;
+  --font-body: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, system-ui, sans-serif;
+  --r: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b1718; --surface: #122324; --surface-2: #19302f; --ink: #e6f1ef; --muted: #9db5b2;
+    --line: #264241; --brand: #6fd0c4; --on-brand: #062321; --accent: #f0a184; --accent-soft: #3a2a24;
+    --ok: #6fd9a4; --ok-soft: #123626; --warn: #f0c36a; --warn-soft: #3a2f12; --bad: #ff9a92; --bad-soft: #3d1b19;
+    --focus: #7cb8ff; --layer1: #b98a70; --layer2: #a76f55; --layer3: #b9a27c;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0b1718; --surface: #122324; --surface-2: #19302f; --ink: #e6f1ef; --muted: #9db5b2;
+  --line: #264241; --brand: #6fd0c4; --on-brand: #062321; --accent: #f0a184; --accent-soft: #3a2a24;
+  --ok: #6fd9a4; --ok-soft: #123626; --warn: #f0c36a; --warn-soft: #3a2f12; --bad: #ff9a92; --bad-soft: #3d1b19;
+  --focus: #7cb8ff; --layer1: #b98a70; --layer2: #a76f55; --layer3: #b9a27c;
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.75;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  -webkit-text-size-adjust: 100%;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--bg); z-index: 40; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.25; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+button, input, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 6px; }
+.wrap { width: 100%; max-width: 1160px; margin-inline: auto; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.num { font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate; display: inline-block; }
+
+/* header */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; gap: 12px; padding-block: 10px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-inline-end: auto; min-width: 0; }
+.brand svg { flex: none; }
+.brand b { font-family: var(--font-display); font-size: 1.45rem; line-height: 1; }
+.brand small { display: block; font-size: .72rem; color: var(--muted); line-height: 1.3; }
+.nav { display: flex; gap: 4px; }
+.nav a { text-decoration: none; padding: 8px 12px; border-radius: 999px; font-size: .95rem; color: var(--muted); }
+.nav a:hover { background: var(--surface-2); color: var(--ink); }
+.icon-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); display: grid; place-items: center; }
+.icon-btn:hover { background: var(--surface-2); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 10px 22px; border-radius: 999px; border: 1.5px solid transparent; font-weight: 600; text-decoration: none; transition: transform .15s, background .15s; }
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--brand); color: var(--on-brand); }
+.btn-primary:hover { filter: brightness(1.12); }
+.btn-ghost { background: transparent; border-color: var(--line); color: var(--ink); }
+.btn-ghost:hover { background: var(--surface-2); }
+.btn-sm { min-height: 36px; padding: 4px 14px; font-size: .9rem; }
+.btn-danger { background: var(--bad-soft); color: var(--bad); border-color: transparent; }
+.btn[disabled] { opacity: .45; cursor: not-allowed; }
+
+/* hero */
+.hero { padding-block: clamp(36px, 7vw, 84px) clamp(28px, 5vw, 56px); }
+.hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(24px, 5vw, 64px); align-items: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: .85rem; font-weight: 600; color: var(--brand); letter-spacing: .02em; }
+.eyebrow::before { content: ""; width: 28px; height: 8px; border-radius: 4px; background: linear-gradient(90deg, var(--sk1), var(--sk2), var(--sk3), var(--sk4), var(--sk5), var(--sk6)); }
+.hero h1 { font-size: clamp(2.3rem, 6vw, 4.3rem); font-weight: 700; margin-block: 14px 18px; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero p.lead { font-size: 1.12rem; color: var(--muted); max-width: 34em; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 30px 0 0; padding: 18px 0 0; border-top: 1px solid var(--line); list-style: none; font-size: .95rem; color: var(--muted); }
+.facts li { display: flex; gap: 8px; align-items: center; }
+.facts b { color: var(--ink); font-weight: 600; }
+.skin-art { width: 100%; max-width: 440px; margin-inline: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 28px; padding: 18px; box-shadow: var(--shadow); }
+.skin-art svg { display: block; width: 100%; height: auto; direction: ltr; }
+.skin-art text { font-family: var(--font-body); font-size: 13px; font-weight: 500; fill: var(--ink); paint-order: stroke; stroke: var(--surface); stroke-width: 4px; stroke-linejoin: round; }
+.drift { animation: drift 7s ease-in-out infinite alternate; transform-origin: 50% 50%; }
+@keyframes drift { from { transform: translateY(0); } to { transform: translateY(-5px); } }
+
+/* sections */
+section.block { padding-block: clamp(40px, 6vw, 76px); }
+.sec-head { display: grid; gap: 8px; margin-bottom: 28px; max-width: 40em; }
+.sec-head h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 700; }
+.sec-head p { color: var(--muted); }
+
+.services { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+.svc { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 20px; display: grid; gap: 8px; align-content: start; }
+.svc h3 { font-size: 1.2rem; font-weight: 600; }
+.svc p { color: var(--muted); font-size: .94rem; }
+.svc .meta { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 6px; padding-top: 12px; border-top: 1px dashed var(--line); font-size: .9rem; }
+.chip { display: inline-flex; align-items: center; padding: 2px 10px; border-radius: 999px; background: var(--surface-2); font-size: .82rem; color: var(--muted); }
+.price { font-weight: 600; }
+
+/* fitzpatrick */
+.fitz { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: clamp(18px, 3vw, 32px); display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(20px, 4vw, 48px); align-items: center; }
+.swatches { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+.sw { aspect-ratio: 1 / 1.5; border-radius: 14px; border: 3px solid transparent; position: relative; display: grid; align-items: end; justify-items: center; padding-bottom: 8px; font-weight: 700; font-family: var(--font-display); font-size: 1.05rem; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); }
+.sw[aria-pressed="true"] { border-color: var(--ink); transform: translateY(-6px); }
+.sw span { mix-blend-mode: normal; }
+.fitz-out h3 { font-size: 1.5rem; margin-bottom: 6px; }
+.fitz-out p { color: var(--muted); }
+.fitz-out .tip { margin-top: 12px; padding: 12px 14px; border-radius: 12px; background: var(--accent-soft); color: var(--ink); font-size: .95rem; }
+.fine { font-size: .82rem; color: var(--muted); margin-top: 10px; }
+
+/* booking */
+.book { display: grid; grid-template-columns: 1fr 320px; gap: 20px; align-items: start; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: clamp(16px, 3vw, 28px); box-shadow: var(--shadow); min-width: 0; }
+.stepper { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; list-style: none; margin: 0 0 22px; padding: 0; }
+.stepper li { display: grid; gap: 4px; font-size: .82rem; color: var(--muted); }
+.stepper li::before { content: ""; height: 5px; border-radius: 3px; background: var(--line); }
+.stepper li.done::before, .stepper li.cur::before { background: var(--brand); }
+.stepper li.cur { color: var(--ink); font-weight: 600; }
+.panel h3 { font-size: 1.45rem; margin-bottom: 4px; }
+.panel > .hint { color: var(--muted); margin-bottom: 16px; font-size: .95rem; }
+.pick-list { display: grid; gap: 10px; }
+.pick { text-align: start; display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 14px 16px; border-radius: 14px; border: 1.5px solid var(--line); background: var(--bg); }
+.pick:hover { border-color: var(--brand); }
+.pick[aria-pressed="true"] { border-color: var(--brand); background: var(--surface-2); box-shadow: inset 0 0 0 1px var(--brand); }
+.pick b { font-weight: 600; }
+.pick small { color: var(--muted); grid-column: 1; }
+.pick .price { grid-row: 1 / span 2; grid-column: 2; align-self: center; text-align: end; }
+.days { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 8px; margin-bottom: 20px; }
+.day { display: grid; gap: 0; justify-items: center; padding: 10px 6px; border-radius: 14px; border: 1.5px solid var(--line); background: var(--bg); line-height: 1.35; }
+.day small { color: var(--muted); font-size: .76rem; }
+.day b { font-size: 1.35rem; font-family: var(--font-display); }
+.day:hover:not([disabled]) { border-color: var(--brand); }
+.day[aria-pressed="true"] { background: var(--brand); color: var(--on-brand); border-color: var(--brand); }
+.day[aria-pressed="true"] small { color: var(--on-brand); }
+.day[disabled] { opacity: .45; cursor: not-allowed; }
+.slot-group { margin-bottom: 14px; }
+.slot-group h4 { margin: 0 0 8px; font-size: .9rem; color: var(--muted); font-weight: 500; }
+.slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 8px; }
+.slot { padding: 9px 6px; border-radius: 10px; border: 1.5px solid var(--line); background: var(--bg); font-variant-numeric: tabular-nums; }
+.slot:hover:not([disabled]) { border-color: var(--brand); }
+.slot[aria-pressed="true"] { background: var(--brand); color: var(--on-brand); border-color: var(--brand); }
+.slot[disabled] { text-decoration: line-through; opacity: .4; cursor: not-allowed; }
+.legend { font-size: .82rem; color: var(--muted); }
+.field { display: grid; gap: 6px; margin-bottom: 16px; }
+.field label { font-weight: 600; font-size: .95rem; }
+.field input, .field textarea { width: 100%; padding: 12px 14px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--bg); }
+.field input:focus, .field textarea:focus { outline: 3px solid var(--focus); outline-offset: 1px; }
+.field .err { color: var(--bad); font-size: .85rem; min-height: 1.2em; }
+.field input[aria-invalid="true"] { border-color: var(--bad); }
+.nav-row { display: flex; justify-content: space-between; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
+.sum { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 80px); }
+.sum h3 { font-size: 1.2rem; margin-bottom: 12px; }
+.sum dl { margin: 0; display: grid; gap: 10px; }
+.sum dt { font-size: .8rem; color: var(--muted); }
+.sum dd { margin: 0; font-weight: 600; }
+.sum .empty { color: var(--muted); font-weight: 400; }
+.sum .total { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line); display: flex; justify-content: space-between; font-weight: 700; }
+.done-box { text-align: center; display: grid; gap: 12px; justify-items: center; padding-block: 8px; }
+.tick { width: 64px; height: 64px; border-radius: 50%; background: var(--ok-soft); color: var(--ok); display: grid; place-items: center; }
+.code { font-family: var(--font-body); font-weight: 600; font-size: 1.8rem; letter-spacing: .12em; padding: 8px 20px; border-radius: 14px; background: var(--surface-2); direction: ltr; }
+.done-box dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; text-align: start; margin: 8px 0; }
+.done-box dt { color: var(--muted); }
+.done-box dd { margin: 0; font-weight: 600; }
+
+/* lookup + admin */
+.lookup { display: grid; gap: 14px; }
+.lookup form { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-start; }
+.lookup form .field { flex: 1 1 220px; margin: 0; }
+.b-list { display: grid; gap: 10px; list-style: none; margin: 0; padding: 0; }
+.b-item { display: grid; grid-template-columns: 1fr auto; gap: 8px 14px; align-items: center; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--line); background: var(--bg); }
+.b-item b { font-weight: 600; }
+.b-item .sub { color: var(--muted); font-size: .88rem; }
+.b-actions { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.st { display: inline-block; padding: 1px 10px; border-radius: 999px; font-size: .78rem; font-weight: 600; }
+.st-pending { background: var(--warn-soft); color: var(--warn); }
+.st-confirmed { background: var(--ok-soft); color: var(--ok); }
+.st-done { background: var(--surface-2); color: var(--muted); }
+.st-cancelled { background: var(--bad-soft); color: var(--bad); }
+.empty-note { padding: 22px; text-align: center; color: var(--muted); border: 1.5px dashed var(--line); border-radius: 14px; }
+.admin-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-block: 14px; }
+.admin-stats div { padding: 12px 14px; border-radius: 12px; background: var(--surface-2); display: grid; }
+.admin-stats b { font-family: var(--font-display); font-size: 1.7rem; line-height: 1.1; }
+.admin-stats span { font-size: .82rem; color: var(--muted); }
+.filters { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.filters button { padding: 6px 14px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--bg); font-size: .88rem; }
+.filters button[aria-pressed="true"] { background: var(--brand); color: var(--on-brand); border-color: var(--brand); }
+.day-h { margin: 14px 0 6px; font-size: .9rem; color: var(--muted); font-weight: 600; }
+
+/* faq + footer */
+.faq { display: grid; gap: 10px; max-width: 52em; }
+.faq details { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 4px 18px; }
+.faq summary { padding: 14px 0; font-weight: 600; cursor: pointer; }
+.faq details p { padding-bottom: 14px; color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding-block: 36px 48px; color: var(--muted); }
+footer .wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+footer h4 { margin: 0 0 8px; color: var(--ink); font-family: var(--font-display); font-size: 1.1rem; }
+footer p { font-size: .94rem; }
+.copy-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.linklike { background: none; border: 0; padding: 0; text-decoration: underline; color: inherit; }
+
+.toast { position: fixed; inset-inline: 0; bottom: calc(env(safe-area-inset-bottom, 0px) + 18px); display: grid; justify-items: center; pointer-events: none; z-index: 60; padding-inline: 16px; }
+.toast div { background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 999px; font-size: .94rem; box-shadow: var(--shadow); transition: opacity .2s, transform .2s; opacity: 0; transform: translateY(8px); }
+.toast div.on { opacity: 1; transform: none; }
+
+@media (max-width: 920px) {
+  .hero .wrap, .fitz, .book { grid-template-columns: 1fr; }
+  .sum { position: static; }
+  .nav { display: none; }
+}
+@media (max-width: 520px) {
+  .stepper li span { display: none; }
+  .b-item { grid-template-columns: 1fr; }
+  .b-actions { justify-content: flex-start; }
+  .brand small { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .drift { animation: none; }
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="عيادة بَشَرة، الرئيسية">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="11" fill="var(--brand)"/><path d="M6 15q5.5-5 11 0t11 0" fill="none" stroke="var(--on-brand)" stroke-width="2.4" stroke-linecap="round"/><path d="M6 22q5.5-5 11 0t11 0" fill="none" stroke="var(--on-brand)" stroke-width="2.4" stroke-linecap="round" opacity=".55"/></svg>
+      <span><b>بَشَرة</b><small>عيادة الأمراض الجلدية والتجميل</small></span>
+    </a>
+    <nav class="nav" aria-label="التنقل الرئيسي">
+      <a href="#services">الخدمات</a>
+      <a href="#skin">اعرف بشرتك</a>
+      <a href="#book">احجز</a>
+      <a href="#mine">حجوزاتي</a>
+      <a href="#faq">أسئلة</a>
+    </nav>
+    <button class="icon-btn" type="button" id="themeBtn" aria-label="تبديل الوضع الليلي">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg>
+    </button>
+    <a class="btn btn-primary btn-sm" href="#book">احجز موعد</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">عيادة جلدية وتجميل · بغداد</span>
+        <h1>بشرتك تحكي حالتها، <em>ونقراها بدقة</em></h1>
+        <p class="lead">فحص بالديرموسكوب، تشخيص واضح، وخطة علاج تفهمها من أول زيارة. احجز موعدك بدقيقتين وبدون اتصال.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#book">احجز موعدك الآن</a>
+          <a class="btn btn-ghost" href="#services">شوف الخدمات والأسعار</a>
+        </div>
+        <ul class="facts">
+          <li><b>الدوام</b> السبت إلى الخميس</li>
+          <li><b>صباحاً</b> <span class="num">10:00</span> – <span class="num">14:00</span></li>
+          <li><b>مساءً</b> <span class="num">17:00</span> – <span class="num">21:00</span></li>
+        </ul>
+      </div>
+      <div class="skin-art" aria-hidden="true">
+        <svg viewBox="0 0 400 400" role="img" focusable="false">
+          <g class="drift">
+            <path d="M262 74 C 266 54, 258 34, 270 8" fill="none" stroke="var(--sk5)" stroke-width="3" stroke-linecap="round"/>
+            <rect x="0" y="100" width="400" height="172" fill="var(--layer2)"/>
+            <path d="M0 78 Q50 58 100 78 T200 78 T300 78 T400 78 V128 H0 Z" fill="var(--layer1)"/>
+            <path d="M262 78 C 258 120, 270 150, 262 186" fill="none" stroke="var(--layer1)" stroke-width="10" stroke-linecap="round"/>
+            <ellipse cx="262" cy="196" rx="15" ry="11" fill="var(--layer1)"/>
+            <circle cx="90" cy="190" r="12" fill="none" stroke="var(--layer1)" stroke-width="4"/>
+            <circle cx="150" cy="225" r="9" fill="none" stroke="var(--layer1)" stroke-width="4"/>
+            <path d="M330 150 q-10 30 4 50 t-6 50" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/>
+            <rect x="0" y="272" width="400" height="128" fill="var(--layer3)"/>
+            <g fill="none" stroke="var(--layer2)" stroke-width="3" opacity=".75">
+              <circle cx="50" cy="318" r="22"/><circle cx="118" cy="344" r="26"/><circle cx="200" cy="316" r="24"/>
+              <circle cx="276" cy="346" r="22"/><circle cx="352" cy="318" r="26"/>
+            </g>
+          </g>
+          <text x="384" y="108" text-anchor="end">البشرة (الأدمة الخارجية)</text>
+          <text x="384" y="176" text-anchor="end">الأدمة (بصيلات وأوعية وأعصاب)</text>
+          <text x="384" y="388" text-anchor="end">النسيج تحت الجلد</text>
+        </svg>
+        <p class="fine" style="text-align:center;margin-top:8px">مقطع مبسّط في الجلد: طبقاته الثلاث وبصيلة الشعر</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>الخدمات والأسعار</h2>
+        <p>الأسعار بالدينار العراقي وتجريبية في هذا النموذج. المدة هي وقت الجلسة داخل العيادة.</p>
+      </div>
+      <div class="services" id="servicesGrid"></div>
+    </div>
+  </section>
+
+  <section class="block" id="skin">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>اعرف نوع بشرتك مع الشمس</h2>
+        <p>يستخدم أطباء الجلدية مقياس فيتزباتريك لتصنيف البشرة حسب تفاعلها مع الشمس. اختَر اللون الأقرب لبشرتك.</p>
+      </div>
+      <div class="fitz">
+        <div>
+          <div class="swatches" id="swatches" role="group" aria-label="أنواع البشرة من الأول إلى السادس"></div>
+          <p class="fine">النتيجة إرشاد عام وما تغني عن فحص الطبيب.</p>
+        </div>
+        <div class="fitz-out" id="fitzOut" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="book">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>احجز موعدك</h2>
+        <p>اختار الخدمة، بعدها اليوم والوقت، وأخيراً بياناتك. تطلع لك رمز حجز تحتفظ بيه.</p>
+      </div>
+      <div class="book">
+        <div class="card" id="bookCard">
+          <ol class="stepper" id="stepper" aria-label="خطوات الحجز">
+            <li data-s="1"><span>الخدمة</span></li>
+            <li data-s="2"><span>الموعد</span></li>
+            <li data-s="3"><span>بياناتك</span></li>
+            <li data-s="4"><span>التأكيد</span></li>
+          </ol>
+
+          <div class="panel" id="step1" data-step="1">
+            <h3 tabindex="-1">شنو الخدمة المطلوبة؟</h3>
+            <p class="hint">إذا مو متأكد، اختار «استشارة جلدية» والطبيب يحدد الباقي.</p>
+            <div class="pick-list" id="pickList"></div>
+            <div class="nav-row"><span></span><button class="btn btn-primary" type="button" data-act="next" id="next1" disabled>التالي: الموعد</button></div>
+          </div>
+
+          <div class="panel" id="step2" data-step="2" hidden>
+            <h3 tabindex="-1">متى يناسبك؟</h3>
+            <p class="hint">المواعيد المشطوبة محجوزة. العطلة يوم الجمعة.</p>
+            <div class="days" id="days" role="group" aria-label="اختيار اليوم"></div>
+            <div id="slotsBox" aria-live="polite"></div>
+            <div class="nav-row"><button class="btn btn-ghost" type="button" data-act="back">رجوع</button><button class="btn btn-primary" type="button" data-act="next" id="next2" disabled>التالي: بياناتك</button></div>
+          </div>
+
+          <div class="panel" id="step3" data-step="3" hidden>
+            <h3 tabindex="-1">بياناتك للتواصل</h3>
+            <p class="hint">نستخدم رقمك فقط لتأكيد الموعد.</p>
+            <form id="detailsForm" novalidate autocomplete="on">
+              <div class="field"><label for="fName">الاسم الكامل</label><input id="fName" name="name" type="text" autocomplete="name" maxlength="60" required><div class="err" id="eName" aria-live="polite"></div></div>
+              <div class="field"><label for="fPhone">رقم الموبايل</label><input id="fPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="07701234567" dir="ltr" style="text-align:start" required><div class="err" id="ePhone" aria-live="polite"></div></div>
+              <div class="field"><label for="fNote">ملاحظة للطبيب (اختياري)</label><textarea id="fNote" name="note" rows="3" maxlength="300" placeholder="مثلاً: حبوب بالوجه من ٣ أشهر"></textarea></div>
+              <div class="nav-row"><button class="btn btn-ghost" type="button" data-act="back">رجوع</button><button class="btn btn-primary" type="submit">تأكيد الحجز</button></div>
+            </form>
+          </div>
+
+          <div class="panel" id="step4" data-step="4" hidden>
+            <div class="done-box" id="doneBox"></div>
+          </div>
+        </div>
+
+        <aside class="card sum" aria-label="ملخص الحجز">
+          <h3>ملخص الحجز</h3>
+          <dl id="sumList"></dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="mine">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>حجوزاتي</h2>
+        <p>اكتب رقم الموبايل اللي حجزت بيه وتشوف مواعيدك وتكدر تلغيها.</p>
+      </div>
+      <div class="card lookup">
+        <form id="lookupForm" novalidate>
+          <div class="field"><label for="lPhone">رقم الموبايل</label><input id="lPhone" type="tel" inputmode="tel" placeholder="07701234567" dir="ltr" style="text-align:start"><div class="err" id="lErr" aria-live="polite"></div></div>
+          <button class="btn btn-primary" type="submit" style="margin-top:28px">اعرض حجوزاتي</button>
+        </form>
+        <div id="lookupOut" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <div class="wrap">
+      <div class="sec-head"><h2>أسئلة يسألونها دائماً</h2></div>
+      <div class="faq">
+        <details><summary>شنو أجيب وياي للموعد؟</summary><p>أي تحاليل أو تقارير سابقة، وأسماء الأدوية والكريمات اللي تستعملها حالياً. وتجنب وضع مكياج على المنطقة المراد فحصها.</p></details>
+        <details><summary>كم تاخذ الزيارة الأولى؟</summary><p>الاستشارة نصف ساعة. إذا الحالة تحتاج جلسة علاجية أو ليزر يحجز لك الطبيب موعد ثاني بالمدة المناسبة.</p></details>
+        <details><summary>إذا ما كدرت أجي، شلون ألغي؟</summary><p>من قسم «حجوزاتي» بنفس رقم الموبايل. نرجو الإلغاء قبل الموعد بساعتين على الأقل حتى نعطي الوقت لمراجع آخر.</p></details>
+        <details><summary>هل الفحص بالديرموسكوب مؤلم؟</summary><p>أبداً. جهاز يكبّر الشامة أو البقعة ويصورها بدون أي ألم ولا قطع.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="clinic">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>لوحة العيادة</h2>
+        <p>للسكرتارية: إدارة الحجوزات وتغيير حالتها. في هذا النموذج الرمز <span class="num">1234</span>، وتنحفظ البيانات على هذا الجهاز فقط.</p>
+      </div>
+      <div class="card" id="adminCard">
+        <form id="pinForm" class="lookup" novalidate>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start">
+            <div class="field" style="flex:1 1 200px;margin:0"><label for="pin">رمز الدخول</label><input id="pin" type="password" inputmode="numeric" autocomplete="off" dir="ltr" style="text-align:start"><div class="err" id="pinErr" aria-live="polite"></div></div>
+            <button class="btn btn-primary" type="submit" style="margin-top:28px">دخول</button>
+          </div>
+        </form>
+        <div id="adminBody" hidden></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><h4>عيادة بَشَرة</h4><p>نموذج لعيادة جلدية وتجميل. الاسم والعنوان والأسعار قابلة للتعديل من أعلى ملف الشفرة.</p></div>
+    <div><h4>العنوان</h4><p id="fAddr"></p></div>
+    <div><h4>للتواصل</h4><p class="copy-row"><span class="num" id="fPhoneTxt"></span><button class="btn btn-ghost btn-sm" type="button" data-act="copy-phone">نسخ الرقم</button></p></div>
+  </div>
+</footer>
+
+<div class="toast" role="status" aria-live="polite"><div id="toast"></div></div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ---------- Settings (edit these for the real clinic) ---------- */
+  var CONFIG = {
+    doctor: 'د. نور الهاشمي',
+    phone: '0770 000 0000',
+    address: 'بغداد، المنصور، شارع ١٤ رمضان (عنوان تجريبي)',
+    adminPin: '1234',
+    sessions: [{ from: 600, to: 840 }, { from: 1020, to: 1260 }], /* minutes from midnight */
+    step: 30,
+    daysAhead: 14,
+    closedWeekdays: [5], /* 5 = Friday */
+    leadMinutes: 60,
+    storageKey: 'bashra.bookings.v1',
+    themeKey: 'bashra.theme'
+  };
+
+  var SERVICES = [
+    { id: 'consult', name: 'استشارة جلدية', desc: 'فحص شامل وتشخيص وخطة علاج مكتوبة.', dur: 30, price: 25000 },
+    { id: 'acne', name: 'علاج حب الشباب', desc: 'تقييم الحالة وبرنامج دوائي وتنظيف عميق للبشرة.', dur: 30, price: 35000 },
+    { id: 'eczema', name: 'الأكزيما والصدفية', desc: 'متابعة الأمراض الجلدية المزمنة وضبط النوبات.', dur: 30, price: 35000 },
+    { id: 'hair', name: 'تساقط الشعر', desc: 'فحص فروة الرأس وتحديد السبب وعلاج مناسب.', dur: 30, price: 40000 },
+    { id: 'mole', name: 'فحص الشامات بالديرموسكوب', desc: 'تكبير وتصوير الشامات للكشف المبكر عن أي تغيّر.', dur: 30, price: 30000 },
+    { id: 'peel', name: 'تقشير كيميائي', desc: 'تفتيح وتجديد البشرة وتخفيف آثار الحبوب.', dur: 60, price: 75000 },
+    { id: 'laser', name: 'ليزر إزالة الشعر', desc: 'جلسة ليزر لمنطقة واحدة حسب نوع البشرة.', dur: 60, price: 60000 },
+    { id: 'botox', name: 'بوتوكس وفيلر', desc: 'علاج التجاعيد وتحديد ملامح الوجه بيد الطبيب.', dur: 60, price: 150000 }
+  ];
+
+  var FITZ = [
+    { t: 'النوع الأول', c: 'var(--sk1)', d: 'بشرة شديدة الفاتحة، تحترق دائماً وما تسمّر.', tip: 'واقٍ شمس +50 كل ساعتين بالخارج، وقبعة وملابس تغطي الجلد. مراقبة الشامات أهم عندك.' },
+    { t: 'النوع الثاني', c: 'var(--sk2)', d: 'فاتحة، تحترق بسهولة وتسمّر قليلاً.', tip: 'واقٍ +50 يومياً حتى بالغيم. تجنّب شمس الظهيرة بين الحادية عشرة والثالثة.' },
+    { t: 'النوع الثالث', c: 'var(--sk3)', d: 'حنطية فاتحة، تحترق أحياناً وتسمّر تدريجياً.', tip: 'واقٍ +30 على الأقل يومياً، وجدّده كل ثلاث ساعات عند التعرض المباشر.' },
+    { t: 'النوع الرابع', c: 'var(--sk4)', d: 'حنطية، نادراً تحترق وتسمّر بسهولة.', tip: 'حتى لو ما تحترق، الشمس تسبب تصبغات ونمشاً. واقٍ +30 مع مرطب خفيف.' },
+    { t: 'النوع الخامس', c: 'var(--sk5)', d: 'سمراء، نادراً جداً تحترق.', tip: 'التصبغات وآثار الحبوب أكثر شكوى عند هذا النوع، والواقي اليومي يخفف منها.' },
+    { t: 'النوع السادس', c: 'var(--sk6)', d: 'بشرة داكنة جداً، ما تحترق عادة.', tip: 'تحتاج حماية من التصبغ أيضاً. افحص باطن الكفين والقدمين دورياً.' }
+  ];
+
+  var STATUS = { pending: 'بانتظار التأكيد', confirmed: 'مؤكد', done: 'تمّ', cancelled: 'ملغى' };
+
+  /* ---------- Helpers ---------- */
+  function $(s, r) { return (r || document).querySelector(s); }
+  function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function money(n) { return n.toLocaleString('en-US') + ' د.ع'; }
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function dateKey(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function parseKey(k) { var p = k.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+  function fmtTime(m) {
+    var h = Math.floor(m / 60), mm = m % 60, h12 = ((h + 11) % 12) + 1;
+    return h12 + ':' + pad(mm) + ' ' + (h < 12 ? 'ص' : 'م');
+  }
+  var fWeek, fDay, fFull;
+  try {
+    fWeek = new Intl.DateTimeFormat('ar-IQ-u-nu-latn', { weekday: 'long' });
+    fDay = new Intl.DateTimeFormat('ar-IQ-u-nu-latn', { day: 'numeric', month: 'long' });
+    fFull = new Intl.DateTimeFormat('ar-IQ-u-nu-latn', { weekday: 'long', day: 'numeric', month: 'long' });
+  } catch (e) {
+    var plain = { format: function (d) { return dateKey(d); } };
+    fWeek = fDay = fFull = plain;
+  }
+  function svcById(id) { for (var i = 0; i < SERVICES.length; i++) if (SERVICES[i].id === id) return SERVICES[i]; return null; }
+  function hash(str) { var h = 2166136261; for (var i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+
+  function normPhone(raw) {
+    var s = String(raw || '').replace(/[٠-٩]/g, function (d) { return String(d.charCodeAt(0) - 1632); })
+      .replace(/[۰-۹]/g, function (d) { return String(d.charCodeAt(0) - 1776); })
+      .replace(/\D/g, '');
+    if (s.indexOf('00964') === 0) s = '0' + s.slice(5);
+    else if (s.indexOf('964') === 0) s = '0' + s.slice(3);
+    else if (s.length === 10 && s.charAt(0) === '7') s = '0' + s;
+    return s;
+  }
+  function validPhone(p) { return /^07[3-9]\d{8}$/.test(p); }
+  function showPhone(p) { return p.length === 11 ? p.slice(0, 4) + ' ' + p.slice(4, 7) + ' ' + p.slice(7) : p; }
+
+  var toastTimer = 0;
+  function toast(msg) {
+    var el = $('#toast'); el.textContent = msg; el.classList.add('on');
+    clearTimeout(toastTimer); toastTimer = setTimeout(function () { el.classList.remove('on'); }, 2600);
+  }
+  function copyText(text, okMsg) {
+    function fallback() {
+      var ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select();
+      var ok = false; try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+      document.body.removeChild(ta); toast(ok ? okMsg : 'حدّد النص وانسخه يدوياً');
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { toast(okMsg); }, fallback);
+    } else fallback();
+  }
+
+  /* ---------- Storage (localStorage with in-memory fallback) ---------- */
+  var mem = [];
+  function loadAll() {
+    try {
+      var raw = window.localStorage.getItem(CONFIG.storageKey);
+      if (raw) { var a = JSON.parse(raw); if (Array.isArray(a)) { mem = a; return a.slice(); } }
+    } catch (e) { /* storage blocked */ }
+    return mem.slice();
+  }
+  function saveAll(list) {
+    mem = list.slice();
+    try { window.localStorage.setItem(CONFIG.storageKey, JSON.stringify(list)); } catch (e) { /* ignore */ }
+  }
+  function newCode(existing) {
+    var A = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789', code;
+    do { code = 'BSH-'; for (var i = 0; i < 5; i++) code += A.charAt(Math.floor(Math.random() * A.length)); }
+    while (existing.some(function (b) { return b.code === code; }));
+    return code;
+  }
+
+  /* ---------- Availability ---------- */
+  function virtualTaken(key, slot) { return hash(key + ':' + slot) % 100 < 26; }
+  function usedSet(key, list) {
+    var set = {};
+    list.forEach(function (b) {
+      if (b.date !== key || b.status === 'cancelled') return;
+      var s = svcById(b.service), dur = s ? s.dur : CONFIG.step;
+      for (var m = b.time; m < b.time + dur; m += CONFIG.step) set[m] = true;
+    });
+    return set;
+  }
+  function slotsFor(key, svc, list) {
+    var used = usedSet(key, list), now = new Date(), isToday = key === dateKey(now);
+    var nowMin = now.getHours() * 60 + now.getMinutes() + CONFIG.leadMinutes;
+    return CONFIG.sessions.map(function (sess) {
+      var out = [];
+      for (var start = sess.from; start + svc.dur <= sess.to; start += CONFIG.step) {
+        var ok = !(isToday && start < nowMin);
+        for (var m = start; ok && m < start + svc.dur; m += CONFIG.step) {
+          if (used[m] || virtualTaken(key, m)) ok = false;
+        }
+        out.push({ start: start, ok: ok });
+      }
+      return out;
+    });
+  }
+  function freeCount(key, svc, list) {
+    return slotsFor(key, svc, list).reduce(function (n, g) { return n + g.filter(function (s) { return s.ok; }).length; }, 0);
+  }
+  function upcomingDays() {
+    var res = [], d = new Date(); d.setHours(0, 0, 0, 0);
+    for (var i = 0; res.length < CONFIG.daysAhead && i < 60; i++) {
+      var c = new Date(d.getFullYear(), d.getMonth(), d.getDate() + i);
+      if (CONFIG.closedWeekdays.indexOf(c.getDay()) === -1) res.push(c);
+    }
+    return res;
+  }
+
+  /* ---------- Static renders ---------- */
+  function renderServices() {
+    $('#servicesGrid').innerHTML = SERVICES.map(function (s) {
+      return '<article class="svc"><h3>' + esc(s.name) + '</h3><p>' + esc(s.desc) + '</p>' +
+        '<div class="meta"><span class="chip">' + s.dur + ' دقيقة</span><span class="price">' + money(s.price) + '</span></div>' +
+        '<button class="btn btn-ghost btn-sm" type="button" data-act="book-svc" data-id="' + s.id + '">احجز هذه الخدمة</button></article>';
+    }).join('');
+    $('#pickList').innerHTML = SERVICES.map(function (s) {
+      return '<button class="pick" type="button" data-act="pick-svc" data-id="' + s.id + '" aria-pressed="false"><b>' + esc(s.name) + '</b><small>' + s.dur + ' دقيقة</small><span class="price">' + money(s.price) + '</span></button>';
+    }).join('');
+  }
+  var fitzIdx = 2;
+  function renderFitz() {
+    $('#swatches').innerHTML = FITZ.map(function (f, i) {
+      var dark = i >= 3;
+      return '<button class="sw" type="button" data-act="fitz" data-i="' + i + '" aria-pressed="' + (i === fitzIdx) + '" aria-label="' + f.t + '" style="background:' + f.c + ';color:' + (dark ? '#fff' : '#3a2416') + '"><span>' + (i + 1) + '</span></button>';
+    }).join('');
+    var f = FITZ[fitzIdx];
+    $('#fitzOut').innerHTML = '<h3>' + f.t + '</h3><p>' + f.d + '</p><div class="tip"><b>نصيحة الشمس:</b> ' + f.tip + '</div>';
+  }
+
+  /* ---------- Booking wizard ---------- */
+  var S = { step: 1, service: null, date: null, time: null, last: null };
+
+  function renderStepper() {
+    $$('#stepper li').forEach(function (li) {
+      var n = +li.getAttribute('data-s');
+      li.className = n < S.step ? 'done' : (n === S.step ? 'cur' : '');
+      if (n === S.step) li.setAttribute('aria-current', 'step'); else li.removeAttribute('aria-current');
+    });
+  }
+  function renderSummary() {
+    var s = svcById(S.service), rows = [];
+    rows.push(['الخدمة', s ? esc(s.name) + ' <span class="chip">' + s.dur + ' د</span>' : null]);
+    rows.push(['اليوم', S.date ? esc(fFull.format(parseKey(S.date))) : null]);
+    rows.push(['الوقت', S.time != null ? '<span class="num">' + esc(fmtTime(S.time)) + '</span>' : null]);
+    $('#sumList').innerHTML = rows.map(function (r) {
+      return '<div><dt>' + r[0] + '</dt><dd>' + (r[1] || '<span class="empty">لم يُحدد بعد</span>') + '</dd></div>';
+    }).join('') + (s ? '<div class="total"><span>الأجر</span><span>' + money(s.price) + '</span></div>' : '');
+  }
+  function showStep(n) {
+    S.step = n;
+    $$('#bookCard .panel').forEach(function (p) { p.hidden = +p.getAttribute('data-step') !== n; });
+    renderStepper();
+    var h = $('#step' + n + ' h3');
+    if (h) { try { h.focus({ preventScroll: true }); } catch (e) { h.focus(); } }
+    var top = $('#bookCard').getBoundingClientRect().top;
+    if (top < 70 || top > window.innerHeight * 0.6) $('#bookCard').scrollIntoView({ block: 'start' });
+  }
+  function selectService(id) {
+    S.service = id;
+    $$('#pickList .pick').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-id') === id)); });
+    $('#next1').disabled = false;
+    if (S.date) {
+      var ok = slotsFor(S.date, svcById(id), loadAll()).some(function (g) { return g.some(function (x) { return x.start === S.time && x.ok; }); });
+      if (!ok) S.time = null;
+    }
+    renderSummary();
+  }
+  function renderDays() {
+    var svc = svcById(S.service); if (!svc) return;
+    var list = loadAll();
+    $('#days').innerHTML = upcomingDays().map(function (d) {
+      var k = dateKey(d), n = freeCount(k, svc, list);
+      return '<button class="day" type="button" data-act="pick-date" data-date="' + k + '" aria-pressed="' + (S.date === k) + '"' + (n ? '' : ' disabled') + '>' +
+        '<small>' + esc(fWeek.format(d)) + '</small><b class="num">' + d.getDate() + '</b><small>' + esc(d.toLocaleDateString('ar-IQ-u-nu-latn', { month: 'long' })) + '</small>' +
+        '<small>' + (n ? n + ' متاح' : 'ممتلئ') + '</small></button>';
+    }).join('');
+  }
+  function renderSlots() {
+    var box = $('#slotsBox'), svc = svcById(S.service);
+    if (!S.date || !svc) { box.innerHTML = '<p class="legend">اختار يوم حتى تظهر الأوقات.</p>'; return; }
+    var groups = slotsFor(S.date, svc, loadAll()), titles = ['الفترة الصباحية', 'الفترة المسائية'];
+    box.innerHTML = groups.map(function (g, i) {
+      return '<div class="slot-group"><h4>' + titles[i] + '</h4><div class="slots">' + g.map(function (s) {
+        return '<button class="slot" type="button" data-act="pick-time" data-time="' + s.start + '" aria-pressed="' + (S.time === s.start) + '"' + (s.ok ? '' : ' disabled') + '>' + fmtTime(s.start) + '</button>';
+      }).join('') + '</div></div>';
+    }).join('') + '<p class="legend">مدة جلستك ' + svc.dur + ' دقيقة.</p>';
+  }
+  function refreshStep2() { renderDays(); renderSlots(); $('#next2').disabled = !(S.date && S.time != null); renderSummary(); }
+
+  function setErr(inputId, errId, msg) {
+    var i = $('#' + inputId), e = $('#' + errId);
+    e.textContent = msg || '';
+    if (msg) i.setAttribute('aria-invalid', 'true'); else i.removeAttribute('aria-invalid');
+  }
+  function submitBooking(ev) {
+    ev.preventDefault();
+    var name = $('#fName').value.trim().replace(/\s+/g, ' '), phone = normPhone($('#fPhone').value), note = $('#fNote').value.trim();
+    var bad = false;
+    if (name.length < 3) { setErr('fName', 'eName', 'اكتب اسمك الكامل (ثلاثة أحرف على الأقل).'); bad = true; } else setErr('fName', 'eName', '');
+    if (!validPhone(phone)) { setErr('fPhone', 'ePhone', 'رقم غير صحيح. مثال: 07701234567'); bad = true; } else setErr('fPhone', 'ePhone', '');
+    if (bad) { var first = $('#detailsForm [aria-invalid="true"]'); if (first) first.focus(); return; }
+    var svc = svcById(S.service), list = loadAll();
+    var stillFree = slotsFor(S.date, svc, list).some(function (g) { return g.some(function (x) { return x.start === S.time && x.ok; }); });
+    if (!stillFree) { S.time = null; toast('هذا الموعد انحجز قبل لحظات، اختار وقت ثاني'); showStep(2); refreshStep2(); return; }
+    var dup = list.some(function (b) { return b.phone === phone && b.date === S.date && b.status !== 'cancelled'; });
+    if (dup && !S.dupOk) { S.dupOk = true; setErr('fPhone', 'ePhone', 'عندك حجز بنفس اليوم لهذا الرقم. اضغط تأكيد مرة ثانية إذا تريد حجز إضافي.'); $('#fPhone').focus(); return; }
+    S.dupOk = false;
+    var b = { code: newCode(list), service: svc.id, date: S.date, time: S.time, name: name, phone: phone, note: note, status: 'pending', created: Date.now() };
+    list.push(b); saveAll(list); S.last = b;
+    renderDone(b); showStep(4);
+  }
+  function renderDone(b) {
+    var s = svcById(b.service);
+    $('#doneBox').innerHTML =
+      '<div class="tick" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>' +
+      '<h3 tabindex="-1">تم تسجيل حجزك، ' + esc(b.name.split(' ')[0]) + '</h3>' +
+      '<div class="code" aria-label="رمز الحجز">' + esc(b.code) + '</div>' +
+      '<dl><dt>الخدمة</dt><dd>' + esc(s.name) + '</dd><dt>الموعد</dt><dd>' + esc(fFull.format(parseKey(b.date))) + '، <span class="num">' + esc(fmtTime(b.time)) + '</span></dd><dt>الأجر</dt><dd>' + money(s.price) + ' عند الحضور</dd><dt>الحالة</dt><dd><span class="st st-pending">' + STATUS.pending + '</span></dd></dl>' +
+      '<p class="legend">تحتاج رمز الحجز أو رقم موبايلك لإلغاء الموعد. هذا النموذج يحفظ الحجز على جهازك فقط.</p>' +
+      '<div class="nav-row" style="justify-content:center"><button class="btn btn-ghost" type="button" data-act="copy-code">نسخ الرمز</button><button class="btn btn-primary" type="button" data-act="again">حجز موعد آخر</button></div>';
+  }
+  function resetBooking() {
+    S.service = S.date = S.time = null; S.dupOk = false;
+    $$('#pickList .pick').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+    $('#next1').disabled = true; $('#detailsForm').reset();
+    setErr('fName', 'eName', ''); setErr('fPhone', 'ePhone', '');
+    renderSummary(); showStep(1);
+  }
+
+  /* ---------- My bookings ---------- */
+  var lookupPhone = '', armed = {};
+  function bookingRow(b, admin) {
+    var s = svcById(b.service), name = s ? s.name : b.service;
+    var acts = '';
+    if (admin) {
+      if (b.status === 'pending') acts += '<button class="btn btn-ghost btn-sm" type="button" data-act="set-status" data-code="' + b.code + '" data-st="confirmed">تأكيد</button>';
+      if (b.status === 'pending' || b.status === 'confirmed') acts += '<button class="btn btn-ghost btn-sm" type="button" data-act="set-status" data-code="' + b.code + '" data-st="done">تمّ الحضور</button>';
+    }
+    if (b.status === 'pending' || b.status === 'confirmed') {
+      var key = (admin ? 'a' : 'm') + b.code;
+      acts += '<button class="btn btn-danger btn-sm" type="button" data-act="cancel" data-admin="' + (admin ? 1 : 0) + '" data-code="' + b.code + '">' + (armed[key] ? 'تأكيد الإلغاء؟' : 'إلغاء') + '</button>';
+    }
+    return '<li class="b-item"><div><b>' + esc(name) + '</b> <span class="st st-' + b.status + '">' + STATUS[b.status] + '</span>' +
+      '<div class="sub">' + esc(fFull.format(parseKey(b.date))) + ' · <span class="num">' + esc(fmtTime(b.time)) + '</span> · <span class="num">' + esc(b.code) + '</span></div>' +
+      (admin ? '<div class="sub">' + esc(b.name) + ' · <span class="num">' + esc(showPhone(b.phone)) + '</span>' + (b.note ? ' · ' + esc(b.note) : '') + '</div>' : '') +
+      '</div><div class="b-actions">' + acts + '</div></li>';
+  }
+  function sortBookings(a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : a.time - b.time; }
+  function renderLookup() {
+    var out = $('#lookupOut');
+    if (!lookupPhone) { out.innerHTML = ''; return; }
+    var mine = loadAll().filter(function (b) { return b.phone === lookupPhone; }).sort(sortBookings);
+    out.innerHTML = mine.length ? '<ul class="b-list">' + mine.map(function (b) { return bookingRow(b, false); }).join('') + '</ul>'
+      : '<div class="empty-note">ما لقينا حجوزات بهذا الرقم. تأكد من الرقم أو <a href="#book">احجز موعد جديد</a>.</div>';
+  }
+
+  /* ---------- Admin ---------- */
+  var admin = { on: false, filter: 'upcoming' };
+  function renderAdmin() {
+    var body = $('#adminBody');
+    $('#pinForm').hidden = admin.on; body.hidden = !admin.on;
+    if (!admin.on) return;
+    var all = loadAll().sort(sortBookings), today = dateKey(new Date());
+    var count = function (fn) { return all.filter(fn).length; };
+    var active = function (b) { return b.status === 'pending' || b.status === 'confirmed'; };
+    var rows = all.filter(function (b) {
+      if (admin.filter === 'today') return b.date === today && b.status !== 'cancelled';
+      if (admin.filter === 'upcoming') return b.date >= today && active(b);
+      return true;
+    });
+    var html = '<div class="admin-stats">' +
+      '<div><b>' + count(function (b) { return b.date === today && b.status !== 'cancelled'; }) + '</b><span>مواعيد اليوم</span></div>' +
+      '<div><b>' + count(function (b) { return b.date >= today && active(b); }) + '</b><span>قادمة</span></div>' +
+      '<div><b>' + count(function (b) { return b.status === 'pending'; }) + '</b><span>بانتظار التأكيد</span></div>' +
+      '<div><b>' + count(function (b) { return b.status === 'done'; }) + '</b><span>تمّ حضورها</span></div>' +
+      '<div><b>' + count(function (b) { return b.status === 'cancelled'; }) + '</b><span>ملغاة</span></div></div>' +
+      '<div class="filters" role="group" aria-label="تصفية الحجوزات">' +
+      [['upcoming', 'القادمة'], ['today', 'اليوم'], ['all', 'الكل']].map(function (f) { return '<button type="button" data-act="filter" data-f="' + f[0] + '" aria-pressed="' + (admin.filter === f[0]) + '">' + f[1] + '</button>'; }).join('') +
+      '</div>';
+    if (!rows.length) html += '<div class="empty-note">لا توجد حجوزات في هذا العرض. أي حجز جديد من الموقع يظهر هنا مباشرة.</div>';
+    else {
+      var cur = '', parts = [];
+      rows.forEach(function (b) {
+        if (b.date !== cur) { if (cur) parts.push('</ul>'); cur = b.date; parts.push('<h4 class="day-h">' + esc(fFull.format(parseKey(b.date))) + '</h4><ul class="b-list">'); }
+        parts.push(bookingRow(b, true));
+      });
+      parts.push('</ul>'); html += parts.join('');
+    }
+    html += '<div class="nav-row"><button class="btn btn-ghost btn-sm" type="button" data-act="lock">قفل اللوحة</button>' +
+      '<button class="btn btn-danger btn-sm" type="button" data-act="wipe">' + (armed.wipe ? 'تأكيد حذف كل الحجوزات؟' : 'حذف كل الحجوزات') + '</button></div>';
+    body.innerHTML = html;
+  }
+
+  /* ---------- Events ---------- */
+  function setStatus(code, st) {
+    var list = loadAll();
+    list.forEach(function (b) { if (b.code === code) b.status = st; });
+    saveAll(list);
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-act]'); if (!t) return;
+    var act = t.getAttribute('data-act');
+    switch (act) {
+      case 'fitz': fitzIdx = +t.getAttribute('data-i'); renderFitz(); break;
+      case 'book-svc': selectService(t.getAttribute('data-id')); showStep(1); $('#bookCard').scrollIntoView({ block: 'start' }); break;
+      case 'pick-svc': selectService(t.getAttribute('data-id')); break;
+      case 'pick-date': S.date = t.getAttribute('data-date'); S.time = null; refreshStep2(); break;
+      case 'pick-time': S.time = +t.getAttribute('data-time'); refreshStep2(); break;
+      case 'next':
+        if (S.step === 1 && S.service) { refreshStep2(); showStep(2); }
+        else if (S.step === 2 && S.date && S.time != null) showStep(3);
+        break;
+      case 'back': if (S.step > 1 && S.step < 4) { showStep(S.step - 1); if (S.step === 2) refreshStep2(); } break;
+      case 'again': resetBooking(); break;
+      case 'copy-code': if (S.last) copyText(S.last.code, 'تم نسخ رمز الحجز'); break;
+      case 'copy-phone': copyText(CONFIG.phone.replace(/\s/g, ''), 'تم نسخ الرقم'); break;
+      case 'cancel': {
+        var isAdmin = t.getAttribute('data-admin') === '1', code = t.getAttribute('data-code'), key = (isAdmin ? 'a' : 'm') + code;
+        if (!armed[key]) {
+          armed = {}; armed[key] = true;
+          if (isAdmin) renderAdmin(); else renderLookup();
+          setTimeout(function () { if (armed[key]) { armed = {}; renderLookup(); renderAdmin(); } }, 5000);
+        } else {
+          armed = {}; setStatus(code, 'cancelled'); toast('تم إلغاء الحجز');
+          renderLookup(); renderAdmin(); if (S.step === 2) refreshStep2();
+        }
+        break;
+      }
+      case 'set-status': setStatus(t.getAttribute('data-code'), t.getAttribute('data-st')); toast('تم تحديث الحالة'); renderAdmin(); renderLookup(); break;
+      case 'filter': admin.filter = t.getAttribute('data-f'); renderAdmin(); break;
+      case 'lock': admin.on = false; armed = {}; $('#pin').value = ''; renderAdmin(); break;
+      case 'wipe':
+        if (!armed.wipe) { armed = { wipe: true }; renderAdmin(); setTimeout(function () { if (armed.wipe) { armed = {}; renderAdmin(); } }, 5000); }
+        else { armed = {}; saveAll([]); toast('تم حذف كل الحجوزات'); renderAdmin(); renderLookup(); if (S.step === 2) refreshStep2(); }
+        break;
+    }
+  });
+
+  $('#detailsForm').addEventListener('submit', submitBooking);
+  $('#lookupForm').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var p = normPhone($('#lPhone').value);
+    if (!validPhone(p)) { $('#lErr').textContent = 'رقم غير صحيح. مثال: 07701234567'; $('#lPhone').setAttribute('aria-invalid', 'true'); lookupPhone = ''; renderLookup(); return; }
+    $('#lErr').textContent = ''; $('#lPhone').removeAttribute('aria-invalid');
+    lookupPhone = p; renderLookup();
+  });
+  $('#pinForm').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    if ($('#pin').value.trim() === CONFIG.adminPin) { admin.on = true; $('#pinErr').textContent = ''; renderAdmin(); }
+    else { $('#pinErr').textContent = 'الرمز غير صحيح.'; $('#pin').setAttribute('aria-invalid', 'true'); }
+  });
+  window.addEventListener('storage', function (e) {
+    if (e.key !== CONFIG.storageKey) return;
+    renderLookup(); renderAdmin(); if (S.step === 2) refreshStep2();
+  });
+
+  /* theme */
+  function applyTheme(t) { if (t) document.documentElement.setAttribute('data-theme', t); }
+  try { applyTheme(window.localStorage.getItem(CONFIG.themeKey)); } catch (e) { /* ignore */ }
+  $('#themeBtn').addEventListener('click', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    if (!cur) cur = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    var next = cur === 'dark' ? 'light' : 'dark'; applyTheme(next);
+    try { window.localStorage.setItem(CONFIG.themeKey, next); } catch (e) { /* ignore */ }
+  });
+
+  /* ---------- Init ---------- */
+  $('#fAddr').textContent = CONFIG.address;
+  $('#fPhoneTxt').textContent = CONFIG.phone;
+  renderServices(); renderFitz(); renderSummary(); renderStepper(); renderSlots(); renderAdmin();
+})();
+</script>
+</body>
+</html>
