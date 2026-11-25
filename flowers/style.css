@@ -270,3 +270,11 @@ input[type=range]{width:100%;accent-color:var(--rose);height:6px}
   .topbar{font-size:.75rem}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+.ph{width:100%;height:100%;object-fit:cover;display:block;transition:.5s}
+.card:hover .card-art .ph{transform:scale(1.06)}
+.card-art .ph{position:absolute;inset:0}
+.line .thumb .ph{width:100%;height:100%}
+.pm-art{padding:0;overflow:hidden}.pm-art .ph{min-height:420px}
+.hero-ph{position:relative;width:min(430px,80%);aspect-ratio:1;border-radius:50%;object-fit:cover;box-shadow:inset 0 0 0 14px rgba(255,255,255,.55),var(--shadow);border:10px solid #fff}
+.hero-art:has(.hero-ph)::before{display:none}

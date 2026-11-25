@@ -81,6 +81,7 @@ const PALETTE = {
 const WRAPS = ['#f4dfd6', '#2f2a33', '#e8c4cf', '#cfe3d4', '#f6e7b4', '#b3263d'];
 
 let UID = 0;
+let HERO_SVG = '';
 const POS = [[150, 92, 1.2], [100, 120, 1.05], [200, 120, 1.05], [150, 150, 1.15], [62, 165, .95], [238, 165, .95],
   [108, 190, 1.05], [192, 190, 1.05], [150, 208, 1], [72, 208, .8], [228, 208, .8]];
 const SP = [[150, 50], [118, 62], [182, 62], [84, 100], [216, 100], [58, 140], [242, 140], [96, 158], [204, 158]];
@@ -145,6 +146,14 @@ const SIZES = [{ k: 's', n: 'صغيرة', m: .75 }, { k: 'm', n: 'وسط', m: 1 
 const CATS = ['الكل', 'جوري', 'زفاف', 'هدايا', 'ربيعية'];
 const CAT_LABEL = { 'الكل': 'الكل', 'جوري': 'باقات الجوري', 'زفاف': 'أفراح وزفاف', 'هدايا': 'هدايا ومواليد', 'ربيعية': 'ربيعية' };
 const artOf = p => bouquet({ items: p.items, wrap: p.wrap, ribbon: p.ribbon, label: p.name });
+/* صورة حقيقية إن وُجدت في photos/ وإلا الرسم البديل */
+const media = p => `<img class="ph" data-pid="${p.id}" src="photos/${p.id}.jpg" alt="${esc(p.name)}" loading="lazy">`;
+document.addEventListener('error', e => {
+  const t = e.target;
+  if (t.tagName !== 'IMG') return;
+  if (t.dataset.pid) t.outerHTML = artOf(PRODUCTS.find(x => x.id === +t.dataset.pid));
+  else if (t.dataset.hero) t.outerHTML = HERO_SVG;
+}, true);
 const bgOf = p => `background:linear-gradient(160deg,${p.bg[0]},${p.bg[1]})`;
 
 /* ============ الحالة ============ */
@@ -163,7 +172,7 @@ function renderGrid() {
     <article class="card" style="animation-delay:${i * 60}ms">
       <div class="card-art" style="${bgOf(p)}" data-open="${p.id}" tabindex="0" role="button" aria-label="تفاصيل ${esc(p.name)}">
         ${p.badge ? `<span class="badge ${p.gold ? 'gold' : ''}">${p.badge}</span>` : ''}
-        ${artOf(p)}
+        ${media(p)}
         <button class="fav ${favs.includes(p.id) ? 'on' : ''}" data-fav="${p.id}" aria-label="إضافة للمفضلة"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.5-9.3C1.1 8.3 3.2 4.5 6.9 4.5c2 0 3.7 1.1 5.1 3 1.4-1.9 3.1-3 5.1-3 3.700 0 5.800 3.800 4.400 7.200C19.500 16.400 12 21 12 21Z"/></svg></button>
       </div>
       <div class="card-body">
@@ -183,7 +192,7 @@ function openProduct(id) {
 }
 function renderPM() {
   const { p, size } = pm;
-  $('#pmArt').setAttribute('style', bgOf(p)); $('#pmArt').innerHTML = artOf(p);
+  $('#pmArt').setAttribute('style', bgOf(p)); $('#pmArt').innerHTML = media(p);
   $('#pmInfo').innerHTML = `
     <span class="eyebrow">${CAT_LABEL[p.cat]}</span>
     <h3>${p.name}</h3><span class="price">${fmt(sizePrice(p, size))}</span>
@@ -328,13 +337,14 @@ function initDate() {
   d.min = t.toISOString().slice(0, 10); d.value = d.min;
 }
 function init() {
+  HERO_SVG = bouquet({ items: [R('#d3213f'), P('#f49bb4'), R('#f06e8f'), P('#fff'), R('#d3213f'), T('#ee5a7a'), P('#f49bb4'), R('#fff1ec'), R('#d3213f'), T('#f2b705'), P('#fbd0dc')], wrap: '#f4dfd6', ribbon: '#8e1a2f', label: 'باقة بتلات' });
   $$('[data-free]').forEach(e => e.textContent = fmt(CONFIG.freeShipOver));
   $$('[data-filler]').forEach(e => e.textContent = fmt(CONFIG.fillerPrice));
   $('#yr').textContent = new Date().getFullYear();
   $('#fPhone').textContent = CONFIG.phoneDisplay;
   $('#fWa').href = $('#waFloat').href = waLink(`مرحباً ${CONFIG.shop}، أريد الاستفسار عن باقات الورد 🌸`);
 
-  $('#heroArt').innerHTML = bouquet({ items: [R('#d3213f'), P('#f49bb4'), R('#f06e8f'), P('#fff'), R('#d3213f'), T('#ee5a7a'), P('#f49bb4'), R('#fff1ec'), R('#d3213f'), T('#f2b705'), P('#fbd0dc')], wrap: '#f4dfd6', ribbon: '#8e1a2f', label: 'باقة بتلات' });
+  $('#heroArt').innerHTML = `<img class="hero-ph" data-hero="1" src="photos/hero.jpg" alt="باقة ورد">`;
 
   // بتلات متساقطة
   $('#petals').innerHTML = Array.from({ length: 16 }, () => {
@@ -355,7 +365,7 @@ function init() {
     const f = e.target.closest('[data-fav]');
     if (f) { const id = +f.dataset.fav; favs = favs.includes(id) ? favs.filter(x => x !== id) : [...favs, id]; save('petals_favs', favs); f.classList.toggle('on'); return; }
     const q = e.target.closest('[data-quick]');
-    if (q) { const p = PRODUCTS.find(x => x.id === +q.dataset.quick); addToCart({ key: p.id + 'm', name: p.name, meta: 'وسط', price: p.price, svg: artOf(p), art: { bg: bgOf(p) } }); return; }
+    if (q) { const p = PRODUCTS.find(x => x.id === +q.dataset.quick); addToCart({ key: p.id + 'm', name: p.name, meta: 'وسط', price: p.price, svg: media(p), art: { bg: bgOf(p) } }); return; }
     const o = e.target.closest('[data-open]'); if (o) openProduct(+o.dataset.open);
   });
   $('#grid').addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.dataset.open) openProduct(+e.target.dataset.open); });
@@ -363,7 +373,7 @@ function init() {
     const s = e.target.closest('[data-size]'); if (s) { pm.size = s.dataset.size; renderPM(); return; }
     if (e.target.closest('#pmAdd')) {
       const { p, size } = pm, sz = SIZES.find(x => x.k === size);
-      addToCart({ key: p.id + size, name: p.name, meta: sz.n, price: sizePrice(p, size), svg: artOf(p), art: { bg: bgOf(p) } });
+      addToCart({ key: p.id + size, name: p.name, meta: sz.n, price: sizePrice(p, size), svg: media(p), art: { bg: bgOf(p) } });
       closeModals();
     }
   });
